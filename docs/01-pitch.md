@@ -140,4 +140,68 @@ I dati sui flussi sono il punto più incerto. Se entro il minuto 20 non c'è una
 
 ---
 
+## 11. Possibili fonti di dati
+
+Le fonti vanno verificate una per una (accesso, licenza, costi aggiornati) prima di usarle in produzione. Per il prototipo basta una fonte "storica" e una "oraria", integrate con dati di esempio.
+
+| Fonte | Che cosa offre | Granularità | Accesso e costo | Uso nel prototipo |
+|---|---|---|---|---|
+| **Statistiche del Ministero della Cultura** (visitatori di musei, monumenti e aree archeologiche statali) | Numero di visitatori per sito, per esempio Colosseo, Pantheon e Galleria Borghese | Mensile o annuale | Pubblico, gratuito | Sì, per dare a ogni luogo un peso di popolarità e una stagionalità |
+| **Portale open data di Roma Capitale** | Dataset su turismo, eventi, mobilità e luoghi di interesse | Varia secondo il dataset | Pubblico, gratuito | Sì, per eventi e anagrafica dei luoghi |
+| **API degli orari di punta** (per esempio BestTime.app, oppure i dati di popolarità per ora di Foursquare Places) | Livello di affollamento previsto per giorno della settimana e ora | Oraria | Commerciale, di solito con una prova gratuita | Sì: è la fonte più vicina a ciò che serve per evitare i picchi |
+| **"Orari di punta" di Google Maps** | Il grafico di affluenza per ora visibile sulle schede dei luoghi | Oraria | Non esposto dall'API ufficiale di Google; usarlo in automatico può violare i termini d'uso | Solo come riferimento manuale per tarare i dati di esempio |
+| **Dati da rete mobile** (analisi aggregate e anonime degli operatori telefonici) | Presenze e flussi per zona della città | Oraria, per area | B2B, a pagamento, tramite accordi | No: è un obiettivo per l'MVP e le partnership |
+| **Dati di bigliettazione** (Parco archeologico del Colosseo, Musei Vaticani, musei civici) | Ingressi per fascia oraria e disponibilità dei biglietti | Oraria o per fascia | Solo tramite accordi di partnership | No: è un obiettivo per l'MVP |
+| **Trasporto pubblico** (dati GTFS di Roma Servizi per la Mobilità e ATAC) | Fermate, linee, orari e tempi di percorrenza | Per corsa | Pubblico, gratuito | Sì, per calcolare gli spostamenti tra le tappe |
+| **Meteo** (per esempio Open-Meteo) | Previsioni orarie | Oraria | Gratuito per uso non commerciale | Sì, per spostare le visite all'aperto quando piove |
+| **Calendari di eventi e festività** (prime domeniche del mese gratuite, eventi religiosi, concerti) | Giorni con picchi anomali | Giornaliera | Pubblico | Sì, come correzione delle previsioni |
+| **Dati raccolti dall'app** (anonimi, con consenso) | Tempi reali di attesa e permanenza | In tempo reale | Proprietari | In futuro: è il nostro vantaggio competitivo man mano che crescono gli utenti |
+
+**Strategia consigliata per il prototipo:** si parte dai visitatori annui del Ministero per stabilire quanto è popolare ogni luogo. Poi si applica un profilo orario tipico per categoria (museo, monumento all'aperto, piazza), tarato a mano sugli orari di punta di Google Maps o, se c'è tempo, ottenuto da una prova gratuita di BestTime.app. Tutto ciò che è stimato va segnato chiaramente come dato dimostrativo.
+
+---
+
+## 12. Automatizzare il video pitch
+
+L'idea è trattare il video come una presentazione: si scrivono le slide e il copione come codice o testo, e un programma le trasforma in video. Così, se cambiamo una frase o un dato, il video si rigenera in pochi minuti invece di essere rimontato a mano.
+
+### Flusso consigliato
+
+```mermaid
+flowchart LR
+    A[Copione e testi delle slide] --> B[Generazione slide .pptx]
+    A --> C[Voce fuori campo con sintesi vocale]
+    D[Registrazione automatica della demo] --> E[Montaggio con ffmpeg]
+    B --> F[Esportazione delle slide in immagini]
+    F --> E
+    C --> E
+    E --> G[Video finale MP4 con sottotitoli]
+```
+
+1. **Copione in un file di testo** (per esempio `video/script.md`): una sezione per slide, con il testo sullo schermo e il testo parlato.
+2. **Slide generate in automatico** con `python-pptx`, che crea un file PowerPoint vero e modificabile dal team.
+3. **Esportazione in immagini** con LibreOffice in modalità headless, da .pptx a PDF e poi a PNG, una immagine per slide.
+4. **Voce fuori campo** generata dal testo parlato con un servizio di sintesi vocale (per esempio `edge-tts`, gratuito, oppure servizi a pagamento con voci più naturali). La durata dell'audio decide quanto dura ogni slide.
+5. **Demo dell'app registrata in automatico** con Playwright: uno script apre il prototipo, compila le preferenze, genera l'itinerario e salva la registrazione video della pagina.
+6. **Montaggio con `ffmpeg`:** unisce le immagini delle slide, la registrazione della demo, la voce, una musica di sottofondo e i sottotitoli, e produce l'MP4 finale.
+
+### Alternative
+
+| Strumento | Come funziona | Pro | Contro |
+|---|---|---|---|
+| **PowerPoint, esportazione come video** | Si registrano tempi e voce sulle slide e si esporta in MP4 | Semplice, nessun codice | Manuale: ogni modifica richiede di riesportare |
+| **Keynote, esportazione come filmato** | Come PowerPoint, su Mac | Animazioni curate | Manuale, solo Mac |
+| **Marp o reveal.js** | Slide scritte in Markdown o HTML, poi registrate o esportate | Slide come codice, facili da versionare nel repo | Serve un passaggio di registrazione per avere il video |
+| **Remotion** | Video costruiti come componenti React e renderizzati in MP4 | Animazioni precise e dati dell'app dentro il video | Richiede più tempo di sviluppo |
+| **Python con `python-pptx` e `ffmpeg`** (flusso consigliato) | Tutto da script, come descritto sopra | Interamente automatico e ripetibile, con un .pptx modificabile come prodotto collaterale | Animazioni più semplici |
+
+### Struttura del video (60-90 secondi)
+1. **Il problema (10 secondi):** un turista in coda al Colosseo sotto il sole.
+2. **La promessa (10 secondi):** "RomaFlow: Roma al momento giusto."
+3. **La demo (40 secondi):** le preferenze inserite, l'itinerario generato, il confronto tra la folla evitata e il tempo risparmiato, il ricalcolo quando piove.
+4. **Perché funziona (10 secondi):** i dati sui flussi e l'ottimizzazione.
+5. **La richiesta (10 secondi):** partner, dati e finanziamento per l'MVP.
+
+---
+
 *Nota: questo documento è una prima bozza di pitch. Dati di mercato e numeri di affluenza vanno raccolti e verificati prima della presentazione a investitori.*
