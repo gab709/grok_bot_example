@@ -1,0 +1,46 @@
+# Aggiornamento automatico dei dati RomaFlow (meteo, orari stagionali, calendario eventi).
+# Orario: il cron di GitHub e' in UTC. "0 1 * * *" = 01:00 UTC
+#   -> 03:00 a Roma con l'ora legale (CEST, UTC+2), 02:00 a Roma con l'ora solare (CET, UTC+1).
+# NB: i trigger "schedule" partono solo quando questo file e' sul branch di default (main),
+#     e lavorano sul branch di default. Anche workflow_dispatch compare nell'interfaccia solo
+#     quando il file e' su main; poi si puo' scegliere il branch su cui eseguirlo.
+name: Aggiorna dati RomaFlow
+
+on:
+  schedule:
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-dati-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rigenera i dati (solo libreria standard, nessuna dipendenza)
+        run: python3 data/aggiorna_dati.py
+
+      - name: Commit solo se qualcosa e' cambiato
+        run: |
+          git add data/
+          if git diff --cached --quiet; then
+            echo "Nessuna modifica ai dati."
+            exit 0
+          fi
+          git -c user.name="github-actions[bot]" \
+              -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+              commit -m "Aggiornamento automatico dati: meteo, orari e calendario ($(TZ=Europe/Rome date +%F))"
+          git push origin HEAD:${{ github.ref_name }}
