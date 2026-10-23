@@ -1,7 +1,7 @@
 {
  "fonte": "Open-Meteo (https://open-meteo.com), previsione, licenza CC BY 4.0",
  "url": "https://api.open-meteo.com/v1/forecast?latitude=41.8933&longitude=12.4829&timezone=Europe%2FRome&forecast_days=7&hourly=temperature_2m%2Cprecipitation_probability%2Cprecipitation%2Cweather_code",
- "scaricato_il": "2026-10-23T12:51:38+02:00",
+ "scaricato_il": "2026-10-23T12:52:36+02:00",
  "latitude": 41.923637,
  "longitude": 12.477454,
  "timezone": "Europe/Rome",
