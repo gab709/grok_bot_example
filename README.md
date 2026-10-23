@@ -52,3 +52,5 @@ docs/                   pitch e guida demo
 ## Tecnologie
 
 HTML, CSS e JavaScript (moduli ES) senza passaggi di build; [Leaflet](https://leafletjs.com/) per la mappa; il provider delle tile si configura in `app/data/config.json` (`map`): predefinito Esri World Dark Gray senza chiave, ripiego automatico su OpenStreetMap, e provider con chiave (MapTiler, Stadia Maps, Mapbox) attivabili inserendo `apiKey` (vedi `app/data/SCHEMA.md`); font Fraunces e Inter da Google Fonts.
+
+- **Istruzioni per il video pitch (Persona 3):** [docs/04-istruzioni-persona3.md](docs/04-istruzioni-persona3.md)
