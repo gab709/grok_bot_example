@@ -116,4 +116,28 @@ Cerchiamo partner, mentori e un primo finanziamento per passare dal prototipo al
 
 ---
 
+## 10. Team e piano di lavoro (sprint di 1 ora)
+
+Siamo un team di 3 persone e lavoriamo in parallelo su tre filoni, ognuno affiancato da un assistente AI.
+
+| Ruolo | Responsabilità | Supporto | Consegna |
+|---|---|---|---|
+| **Persona 1, Dati** | Verificare quali fonti di flussi di persone sono realmente utilizzabili (open data, API degli orari di punta, dati di musei e trasporti) e preparare il dataset | Agente Coding | File con 10-15 luoghi di Roma, orari di apertura e livello di folla per fascia oraria (dati reali dove disponibili, altrimenti dati di esempio chiaramente segnati) |
+| **Persona 2, Prototipo** | Costruire l'app: inserimento di date, luoghi da vedere e ritmo, e generazione dell'itinerario ordinato per evitare i picchi, con mappa e orari | Agente Coding | Web app dimostrativa funzionante nel repo |
+| **Persona 3, Pitch e video** | Scrivere il copione del video (60-90 secondi), preparare grafiche e voce, registrare la demo del prototipo e montare il video | Agente startup pitch | Video pitch che mostra come funziona RomaFlow |
+
+### Tempi
+
+| Minuti | Persona 1, Dati | Persona 2, Prototipo | Persona 3, Pitch e video |
+|---|---|---|---|
+| 0-20 | Ricerca delle fonti e creazione del dataset | Struttura dell'app con dati finti | Copione e grafiche |
+| 20-40 | Consegna del dataset e supporto all'integrazione | Integrazione dei dati e rifinitura dell'itinerario | Copione finale e voce |
+| 40-50 | Verifica dei dati mostrati nella demo | Demo pronta da registrare | Registrazione dello schermo e montaggio |
+| 50-60 | Revisione insieme e ultimo commit nel repo | Revisione insieme e ultimo commit nel repo | Revisione insieme e ultimo commit nel repo |
+
+### Rischio principale
+I dati sui flussi sono il punto più incerto. Se entro il minuto 20 non c'è una fonte reale pronta, il prototipo usa i dati di esempio e il pitch lo dichiara apertamente, indicando le fonti da attivare nell'MVP.
+
+---
+
 *Nota: questo documento è una prima bozza di pitch. Dati di mercato e numeri di affluenza vanno raccolti e verificati prima della presentazione a investitori.*
