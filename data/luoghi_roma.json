@@ -2,13 +2,13 @@
   "meta": {
     "dataset": "RomaFlow - luoghi iconici di Roma",
     "version": "1.0",
-    "generated": "2026-10-23",
     "crowd_scale": "0-100 (0 = chiuso o vuoto, 100 = picco massimo relativo nel dataset)",
     "crowd_hours_meaning": "Ogni valore si riferisce alla fascia che inizia all'ora indicata (7 = 07:00-07:59 ... 22 = 22:00-22:59)",
     "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
     "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
-    "opening_hours_season": "Orari di riferimento: stagione invernale (da fine ottobre 2026). Le variazioni stagionali sono in opening_hours_note.",
+    "opening_hours_season": "Orari della stagione 'ottobre' valida al 2026-10-23 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
+    "generated_at": "2026-10-23T12:38:34+02:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
@@ -21,31 +21,31 @@
       "opening_hours": {
         "lun": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "mar": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "mer": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "gio": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "ven": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "sab": [
           "08:30",
-          "16:30"
+          "18:30"
         ],
         "dom": [
           "08:30",
-          "16:30"
+          "18:30"
         ]
       },
       "opening_hours_note": "Orario invernale dal 25/10/2026 al 28/02/2027 (ultimo ingresso 15:30). Dal 1 al 24/10/2026 8:30-18:30; 29/03-30/09/2026 8:30-19:15. Chiuso 25/12 e 1/1. Gratis la prima domenica del mese (senza prenotazione, folla molto alta).",
@@ -85,8 +85,8 @@
         75,
         80,
         70,
-        0,
-        0,
+        55,
+        40,
         0,
         0,
         0,
@@ -103,8 +103,8 @@
         93,
         93,
         82,
-        0,
-        0,
+        66,
+        49,
         0,
         0,
         0,
@@ -131,31 +131,31 @@
       "opening_hours": {
         "lun": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "mar": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "mer": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "gio": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "ven": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "sab": [
           "09:00",
-          "16:30"
+          "18:30"
         ],
         "dom": [
           "09:00",
-          "16:30"
+          "18:30"
         ]
       },
       "opening_hours_note": "Apre alle 9:00; chiusura del Parco 16:30 dal 25/10/2026 (18:30 fino al 24/10). Chiuso 25/12 e 1/1.",
@@ -195,8 +195,8 @@
         64,
         68,
         60,
-        0,
-        0,
+        47,
+        34,
         0,
         0,
         0,
@@ -213,8 +213,8 @@
         79,
         79,
         70,
-        0,
-        0,
+        56,
+        42,
         0,
         0,
         0,
@@ -568,31 +568,31 @@
       "opening_hours": {
         "lun": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "mar": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "mer": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "gio": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "ven": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "sab": [
           "07:00",
-          "19:00"
+          "20:00"
         ],
         "dom": [
           "07:00",
-          "19:00"
+          "20:00"
         ]
       },
       "opening_hours_note": "Dal 26/10/2026 al 28/03/2027 7-19; fino al 25/10/2026 7-20. Il mercoledì mattina (udienza generale in piazza, ore 10) e durante celebrazioni papali l'accesso puo' essere limitato o sospeso: da verificare caso per caso.",
@@ -1443,27 +1443,27 @@
         "lun": null,
         "mar": [
           "09:00",
-          "17:30"
+          "18:30"
         ],
         "mer": [
           "09:00",
-          "17:30"
+          "18:30"
         ],
         "gio": [
           "09:00",
-          "17:30"
+          "18:30"
         ],
         "ven": [
           "09:00",
-          "17:30"
+          "18:30"
         ],
         "sab": [
           "09:00",
-          "17:30"
+          "18:30"
         ],
         "dom": [
           "09:00",
-          "17:30"
+          "18:30"
         ]
       },
       "opening_hours_note": "Lunedi' chiuso. Dal 25/10/2026 9-17:30; fino al 24/10/2026 9-18:30.",
@@ -1504,7 +1504,7 @@
         40,
         35,
         28,
-        0,
+        20,
         0,
         0,
         0,
@@ -1522,7 +1522,7 @@
         47,
         42,
         33,
-        0,
+        25,
         0,
         0,
         0,

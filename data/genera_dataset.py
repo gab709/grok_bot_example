@@ -115,6 +115,8 @@ PROF = {
 # Popolarita' (0-1): da visitatori reali (scala logaritmica) dove disponibili, altrimenti stima manuale.
 POP_MANUAL = {"foro_romano_palatino": .85, "fontana_di_trevi": 1.0, "basilica_san_pietro": .95, "piazza_navona": .80,
               "piazza_di_spagna": .85, "trastevere": .75, "campo_de_fiori": .60, "bocca_della_verita": .55, "musei_capitolini": .55}
+P_BY_ID = {p["id"]: p for p in P}
+
 def popularity(p):
     if p["visitors"]:
         v = p["visitors"]  # 250k -> ~0.5, 15M -> 1.0
@@ -128,71 +130,124 @@ def is_open(hours_day, h):
     start, end = h*60, h*60+60
     return start < ch*60+cm and end > oh*60+om
 
-places = []
-for p in P:
-    pop, pop_src = popularity(p)
-    crowd = {}
-    for dt, ref_day in (("feriale", "mer"), ("festivo", "sab")):
-        prof = PROF[p["category"]][dt]
-        boost = 1.1 if dt == "festivo" else 1.0
-        vals = []
-        for i, h in enumerate(HOURS):
-            open_ = is_open(p["hours"][ref_day], h)
-            vals.append(int(round(min(100, prof[i] * pop * boost * 100))) if open_ else 0)
-        crowd[dt] = vals
-    places.append({
-        "id": p["id"], "name": p["name"], "category": p["category"],
-        "lat": p["lat"], "lon": p["lon"],
-        "opening_hours": p["hours"], "opening_hours_note": p["hours_note"],
-        "booking": p["booking"], "booking_note": p["booking_note"],
-        "visit_duration_min": p["duration_min"],
-        "annual_visitors": p["visitors"], "annual_visitors_year": p["visitors_year"], "annual_visitors_note": p["visitors_note"],
-        "popularity": pop,
-        "crowd_hours": HOURS,
-        "crowd_weekday": crowd["feriale"], "crowd_weekend": crowd["festivo"],
-        "sources": {
-            "coordinates": COORD_SRC,
-            "opening_hours": p["hours_source"], "opening_hours_status": p["hours_status"],
-            "booking": p["booking_source"],
-            "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
-            "annual_visitors": p["visitors_source"],
-            "popularity": pop_src,
-            "crowd": "stima dimostrativa",
-        },
-        "crowd_source": "stima dimostrativa",
-    })
 
-meta = {
-    "dataset": "RomaFlow - luoghi iconici di Roma", "version": "1.0", "generated": "2026-10-23",
-    "crowd_scale": "0-100 (0 = chiuso o vuoto, 100 = picco massimo relativo nel dataset)",
-    "crowd_hours_meaning": "Ogni valore si riferisce alla fascia che inizia all'ora indicata (7 = 07:00-07:59 ... 22 = 22:00-22:59)",
-    "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
-    "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
-    "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
-    "opening_hours_season": "Orari di riferimento: stagione invernale (da fine ottobre 2026). Le variazioni stagionali sono in opening_hours_note.",
-    "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile",
+# --- Orari stagionali (cambio estate/inverno per data) ---------------------
+import datetime as _dt
+from zoneinfo import ZoneInfo
+ROMA = ZoneInfo("Europe/Rome")  # i runner GitHub sono in UTC: le date si calcolano sempre sull'ora di Roma
+def ultima_domenica(anno, mese):
+    """Ultima domenica del mese (usata per i cambi di stagione, allineati all'ora legale)."""
+    d = _dt.date(anno, mese + 1, 1) - _dt.timedelta(days=1) if mese < 12 else _dt.date(anno, 12, 31)
+    return d - _dt.timedelta(days=(d.weekday() + 1) % 7)
+
+def stagione(oggi):
+    """'estate' = da ultima domenica di marzo al 30/09; 'ottobre' = 1/10 fino al giorno prima dell'ultima
+    domenica di ottobre; 'inverno' = da ultima domenica di ottobre a fine febbraio; 'marzo' = 1/3 fino al giorno
+    prima dell'ultima domenica di marzo. Regola ricavata dagli orari 2026 del Parco del Colosseo."""
+    y = oggi.year
+    if oggi >= ultima_domenica(y, 10) or oggi.month <= 2: return "inverno"
+    if oggi.month == 3 and oggi < ultima_domenica(y, 3): return "marzo"
+    if oggi.month >= 10: return "ottobre"
+    return "estate"
+
+# Orari di chiusura per stagione (apertura invariata). Fonte: note in P (colosseo.it, basilicasanpietro.va, cultura.gov.it).
+STAGIONALI = {
+    "colosseo":             {"open": "08:30", "close": {"estate": "19:15", "ottobre": "18:30", "inverno": "16:30", "marzo": "17:30"}},
+    "foro_romano_palatino": {"open": "09:00", "close": {"estate": "19:15", "ottobre": "18:30", "inverno": "16:30", "marzo": "17:30"}},
+    # San Pietro: 7-20 fino al 25/10/2026, 7-19 dal 26/10/2026 al 28/03/2027 (cambio approssimato all'ultima domenica)
+    "basilica_san_pietro":  {"open": "07:00", "close": {"estate": "20:00", "ottobre": "20:00", "inverno": "19:00", "marzo": "19:00"}},
+    # Caracalla: 18:30 fino al 24/10/2026, 17:30 dal 25/10. Estate e marzo NON verificati (assunto 18:30 / 17:30).
+    "terme_di_caracalla":   {"open": "09:00", "close": {"estate": "18:30", "ottobre": "18:30", "inverno": "17:30", "marzo": "17:30"}},
 }
-with open(os.path.join(OUT, "luoghi_roma.json"), "w", encoding="utf-8") as f:
-    json.dump({"meta": meta, "places": places}, f, ensure_ascii=False, indent=2)
+def orario_stagionale(pid, orario_giorno, oggi):
+    """Orario [apertura, chiusura] di un giorno, corretto per la stagione della data `oggi`."""
+    st = STAGIONALI.get(pid)
+    if not st or orario_giorno is None: return orario_giorno
+    return [st["open"], st["close"][stagione(oggi)]]
 
-with open(os.path.join(OUT, "luoghi_roma.csv"), "w", newline="", encoding="utf-8") as f:
-    w = csv.writer(f)
-    w.writerow(["id","name","category","lat","lon"] + [f"orario_{d}" for d in DAYS] +
-               ["opening_hours_note","booking","visit_duration_min","annual_visitors","annual_visitors_year","popularity",
-                "source_coordinates","source_opening_hours","opening_hours_status","source_booking","source_visit_duration",
-                "source_annual_visitors","source_popularity","crowd_source"])
-    for p in places:
-        s = p["sources"]
-        w.writerow([p["id"],p["name"],p["category"],p["lat"],p["lon"]] +
-                   [("chiuso" if p["opening_hours"][d] is None else "-".join(p["opening_hours"][d])) for d in DAYS] +
-                   [p["opening_hours_note"],p["booking"],p["visit_duration_min"],p["annual_visitors"] or "",p["annual_visitors_year"] or "",p["popularity"],
-                    s["coordinates"],s["opening_hours"],s["opening_hours_status"],s["booking"],s["visit_duration"],s["annual_visitors"],s["popularity"],p["crowd_source"]])
+def applica_stagione(oggi):
+    s = stagione(oggi)
+    for p in P:
+        st = STAGIONALI.get(p["id"])
+        if st:
+            p["hours"] = {d: (None if v is None else [st["open"], st["close"][s]]) for d, v in p["hours"].items()}
+    return s
 
-with open(os.path.join(OUT, "affollamento_orario.csv"), "w", newline="", encoding="utf-8") as f:
-    w = csv.writer(f)
-    w.writerow(["place_id","day_type","hour","crowd_level","crowd_source"])
-    for p in places:
-        for dt, key in (("feriale","crowd_weekday"),("festivo","crowd_weekend")):
-            for h, v in zip(HOURS, p[key]):
-                w.writerow([p["id"], dt, f"{h:02d}:00", v, "stima dimostrativa"])
-print("ok", len(places))
+def genera(oggi=None):
+    """Rigenera luoghi_roma.json/.csv e affollamento_orario.csv con gli orari della stagione di `oggi`."""
+    oggi = oggi or _dt.datetime.now(ROMA).date()
+    stag = applica_stagione(oggi)
+    places = []
+    for p in P:
+        pop, pop_src = popularity(p)
+        crowd = {}
+        for dt, ref_day in (("feriale", "mer"), ("festivo", "sab")):
+            prof = PROF[p["category"]][dt]
+            boost = 1.1 if dt == "festivo" else 1.0
+            vals = []
+            for i, h in enumerate(HOURS):
+                open_ = is_open(p["hours"][ref_day], h)
+                vals.append(int(round(min(100, prof[i] * pop * boost * 100))) if open_ else 0)
+            crowd[dt] = vals
+        places.append({
+            "id": p["id"], "name": p["name"], "category": p["category"],
+            "lat": p["lat"], "lon": p["lon"],
+            "opening_hours": p["hours"], "opening_hours_note": p["hours_note"],
+            "booking": p["booking"], "booking_note": p["booking_note"],
+            "visit_duration_min": p["duration_min"],
+            "annual_visitors": p["visitors"], "annual_visitors_year": p["visitors_year"], "annual_visitors_note": p["visitors_note"],
+            "popularity": pop,
+            "crowd_hours": HOURS,
+            "crowd_weekday": crowd["feriale"], "crowd_weekend": crowd["festivo"],
+            "sources": {
+                "coordinates": COORD_SRC,
+                "opening_hours": p["hours_source"], "opening_hours_status": p["hours_status"],
+                "booking": p["booking_source"],
+                "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+                "annual_visitors": p["visitors_source"],
+                "popularity": pop_src,
+                "crowd": "stima dimostrativa",
+            },
+            "crowd_source": "stima dimostrativa",
+        })
+
+    meta = {
+        "dataset": "RomaFlow - luoghi iconici di Roma", "version": "1.0", 
+        "crowd_scale": "0-100 (0 = chiuso o vuoto, 100 = picco massimo relativo nel dataset)",
+        "crowd_hours_meaning": "Ogni valore si riferisce alla fascia che inizia all'ora indicata (7 = 07:00-07:59 ... 22 = 22:00-22:59)",
+        "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
+        "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
+        "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
+        "opening_hours_season": f"Orari della stagione '{stag}' valida al {oggi.isoformat()} (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
+        "generated_at": _dt.datetime.now(ROMA).isoformat(timespec="seconds"),
+        "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile",
+    }
+    with open(os.path.join(OUT, "luoghi_roma.json"), "w", encoding="utf-8") as f:
+        json.dump({"meta": meta, "places": places}, f, ensure_ascii=False, indent=2)
+
+    with open(os.path.join(OUT, "luoghi_roma.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["id","name","category","lat","lon"] + [f"orario_{d}" for d in DAYS] +
+                   ["opening_hours_note","booking","visit_duration_min","annual_visitors","annual_visitors_year","popularity",
+                    "source_coordinates","source_opening_hours","opening_hours_status","source_booking","source_visit_duration",
+                    "source_annual_visitors","source_popularity","crowd_source"])
+        for p in places:
+            s = p["sources"]
+            w.writerow([p["id"],p["name"],p["category"],p["lat"],p["lon"]] +
+                       [("chiuso" if p["opening_hours"][d] is None else "-".join(p["opening_hours"][d])) for d in DAYS] +
+                       [p["opening_hours_note"],p["booking"],p["visit_duration_min"],p["annual_visitors"] or "",p["annual_visitors_year"] or "",p["popularity"],
+                        s["coordinates"],s["opening_hours"],s["opening_hours_status"],s["booking"],s["visit_duration"],s["annual_visitors"],s["popularity"],p["crowd_source"]])
+
+    with open(os.path.join(OUT, "affollamento_orario.csv"), "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["place_id","day_type","hour","crowd_level","crowd_source"])
+        for p in places:
+            for dt, key in (("feriale","crowd_weekday"),("festivo","crowd_weekend")):
+                for h, v in zip(HOURS, p[key]):
+                    w.writerow([p["id"], dt, f"{h:02d}:00", v, "stima dimostrativa"])
+    print("ok", len(places))
+
+    return places, stag
+
+if __name__ == "__main__":
+    genera()

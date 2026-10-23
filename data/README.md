@@ -11,7 +11,12 @@ Dataset di **15 luoghi iconici di Roma** per il prototipo RomaFlow: anagrafica, 
 | `luoghi_roma.json` | Formato principale per la web app: `{ meta, places[] }` |
 | `luoghi_roma.csv` | Una riga per luogo (orari per giorno come `HH:MM-HH:MM` o `chiuso`) |
 | `affollamento_orario.csv` | Formato lungo: `place_id, day_type (feriale/festivo), hour, crowd_level, crowd_source` |
-| `genera_dataset.py` | Script che genera i tre file (modificare qui e rilanciare `python3 genera_dataset.py`) |
+| `genera_dataset.py` | Script che genera i tre file sopra (orari della stagione corrente). Modificare qui i dati dei luoghi |
+| `aggiorna_dati.py` | Aggiornamento completo (ogni ora): rigenera i file sopra, `meteo_roma.json` e `calendario.json` |
+| `meteo_roma.json` | Previsione meteo oraria per Roma, prossimi 7 giorni (Open-Meteo), istantanea dell'ultimo aggiornamento |
+| `calendario.json` | Prossimi 60 giorni: festività, eventi, orari del giorno e affollamento corretto per ogni luogo |
+| `meteo.js` | Modulo ES per il browser: meteo in tempo reale da Open-Meteo e avvisi pioggia per i luoghi all'aperto |
+| `test_meteo.mjs` | Test di `meteo.js` con Node 18+ (`node data/test_meteo.mjs`) |
 
 ## Luoghi
 
@@ -57,7 +62,7 @@ Non sono stati usati dati di Google Maps "orari di punta" (non è consentito est
 
 ## Avvertenze sugli orari (importanti per l'itinerario)
 
-- Gli orari nel JSON sono quelli della **stagione invernale** (da fine ottobre 2026); le variazioni sono in `opening_hours_note`.
+- Gli orari in `luoghi_roma.json` sono quelli della **stagione valida alla data di generazione** (vedi `meta.opening_hours_season`); per le date future usare `calendario.json`, che applica la stagione di ogni singolo giorno.
 - **Musei Vaticani:** chiusi la domenica, **tranne l'ultima domenica del mese** (9-14, ultimo ingresso 12:30, gratuito, non prenotabile, code lunghissime). Ultimo ingresso nei giorni normali alle 18:00. Chiusi anche in varie festività (vedi nota).
 - **Colosseo / Foro:** il 25 ottobre 2026 la chiusura passa da 18:30 a 16:30 (ultimo ingresso 15:30). Prenotazione della fascia obbligatoria. Prima domenica del mese gratuita (senza prenotazione, molta folla).
 - **Basilica di San Pietro:** dal 26 ottobre 2026 7-19 (prima 7-20). Mercoledì mattina (udienza generale) e celebrazioni papali possono limitare l'accesso.
@@ -80,3 +85,53 @@ Non sono stati usati dati di Google Maps "orari di punta" (non è consentito est
 - Basilica di San Pietro, orari: https://www.basilicasanpietro.va/it/orari
 - Musei Capitolini, informazioni pratiche: https://www.museicapitolini.org/it/informazioni_pratiche/orari_e_indirizzi
 - Santa Maria in Cosmedin (Turismo Roma): https://www.turismoroma.it/it/luoghi/basilica-di-santa-maria-cosmedin
+
+## Dati in tempo reale e aggiornamento automatico
+
+### Meteo in tempo reale nel browser (`meteo.js`)
+
+Modulo ES senza dipendenze e senza chiave API: chiama direttamente [Open-Meteo](https://open-meteo.com/en/docs) (gratuito per uso non commerciale, dati CC BY 4.0, va citata la fonte nell'app).
+
+```js
+import { getMeteo, getMeteoPerLuoghi, valutaLuoghiAperto, adattoAllOra } from './data/meteo.js';
+
+const luoghi = (await (await fetch('./data/luoghi_roma.json')).json()).places;
+const meteo = await getMeteo();                 // Roma centro, oggi + 6 giorni, ora per ora
+// meteo.ore = [{ time, data, ora, temperatura, probPioggia, pioggiaMm, codice, descrizione }, ...]
+
+const avvisi = valutaLuoghiAperto(luoghi, meteo, { soglia: 60 });
+// { colosseo: { allAperto: true, oreSconsigliate: { '2026-10-24': [14, 15] } }, musei_vaticani: { allAperto: false, ... } }
+
+adattoAllOra(luoghi[0], meteo, '2026-10-24', 15);   // false se piove (prob >= 60%) e il luogo è all'aperto
+const perLuogo = await getMeteoPerLuoghi(luoghi);   // facoltativo: una chiamata per luogo (lat/lon propri)
+```
+
+- Luoghi "all'aperto" = categoria `monumento all'aperto`, `piazza`, `quartiere`. Nota: il Pantheon è classificato come monumento ed è quindi trattato come luogo all'aperto (in realtà è coperto, a parte l'oculo); l'app può fare un'eccezione.
+- Soglia di probabilità di pioggia configurabile (`soglia`, default 60%). Si considerano solo le fasce 07-22 (`ore`, configurabile).
+- Se la chiamata live non funziona (offline), l'app può usare `meteo_roma.json` come riserva (istantanea dell'ultimo aggiornamento orario).
+
+### Aggiornamento orario (`aggiorna_dati.py`)
+
+```bash
+python3 data/aggiorna_dati.py                # tutto: dataset + meteo + calendario 60 giorni
+python3 data/aggiorna_dati.py --senza-meteo --giorni 30 --soglia-pioggia 70
+```
+
+Solo libreria standard Python (3.9+). A ogni esecuzione:
+
+1. **Orari stagionali**: sceglie la stagione per data (regola ricavata dagli orari 2026 del Parco del Colosseo, allineata all'ora legale): `estate` (ultima domenica di marzo - 30/09), `ottobre` (1/10 - sabato prima dell'ultima domenica di ottobre), `inverno` (ultima domenica di ottobre - fine febbraio), `marzo`. Varia la chiusura di Colosseo, Foro/Palatino, San Pietro e Terme di Caracalla (estate e marzo di Caracalla non verificati). Tutte le date sono calcolate sull'ora di Roma.
+2. **`generated_at`** in `luoghi_roma.json` e `calendario.json`.
+3. **`meteo_roma.json`**: previsione oraria Open-Meteo per i prossimi 7 giorni (se fallisce, il resto viene aggiornato comunque).
+4. **`calendario.json`** per i prossimi 60 giorni, con per ogni giorno `eventi` e, per ogni luogo, `open` (orario del giorno o `null`), `crowd` (16 valori, 07-22), `fattore`, `note`, `ore_sconsigliate_pioggia`.
+   - Festività nazionali calcolate nel codice (Pasqua con algoritmo di Meeus) + 29 giugno (patroni di Roma).
+   - Prima domenica del mese: ingresso gratuito nei luoghi statali (Colosseo, Foro/Palatino, Pantheon, Castel Sant'Angelo, Galleria Borghese, Terme di Caracalla) -> affollamento x1,5.
+   - Ultima domenica del mese: Musei Vaticani gratuiti 9-14 (escluse Pasqua, 29/6, 25-26/12, 31/12) -> x1,6.
+   - Mercoledì: udienza generale del Papa -> San Pietro x1,3 dalle 8 alle 12 e nota di accesso limitato (a luglio di solito sospesa: verificare su vatican.va).
+   - Festività: luoghi all'aperto x1,15; chiusure festive note (Vaticani, Colosseo, Pantheon, Capitolini, Bocca della Verità).
+   - **L'affollamento resta una stima dimostrativa** (`crowd_source: "stima dimostrativa"`): i fattori sono ipotesi, non misure.
+
+### GitHub Actions (`.github/workflows/aggiorna-dati.yml`)
+
+- **Ogni ora** al minuto 0 (`0 * * * *`; GitHub puo' ritardare di qualche minuto) e a mano con `workflow_dispatch`.
+- Esegue `python3 data/aggiorna_dati.py` e fa commit sullo stesso branch **solo se i file sono cambiati**, come `github-actions[bot]` (`permissions: contents: write`). Poiché `generated_at` e il meteo cambiano a ogni esecuzione, in pratica c'è un commit ogni ora.
+- **Limite di GitHub:** i trigger `schedule` partono solo quando il workflow è sul **branch di default (main)** e girano su main; quindi l'aggiornamento automatico funziona solo dopo il merge di `data/` e del workflow su main.
