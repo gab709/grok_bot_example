@@ -8,7 +8,7 @@
     "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
     "opening_hours_season": "Orari della stagione 'ottobre' valida al 2026-10-23 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
-    "generated_at": "2026-10-23T12:38:34+02:00",
+    "generated_at": "2026-10-23T12:41:43+02:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
