@@ -311,3 +311,5 @@ main { position: relative; }
 
 /* Provider di tile chiari (es. OSM standard) resi scuri via CSS */
 .map-dark-filter .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) saturate(.5) contrast(.9); }
+
+.data-updated { margin: 8px 0 0; font-size: 12px; color: var(--muted); opacity: .85; }

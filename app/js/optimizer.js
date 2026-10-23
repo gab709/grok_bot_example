@@ -12,7 +12,7 @@
  * L'itinerario "standard" di confronto parte alle 9:30 e segue l'ordine
  * del vicino più prossimo, ignorando la folla (come una guida classica).
  */
-import { crowdAt, openWindow, isClosedOn, toMinutes } from "./data-adapter.js";
+import { crowdAt, openWindow, isClosedOn, toMinutes, hoursFor } from "./data-adapter.js";
 
 const R = 6371;
 export function distanceKm(a, b) {
@@ -56,7 +56,7 @@ export function simulateDay(order, ctx) {
     const tr = travel(loc, place.coordinates, pace, model);
     const arrive = t + tr.minutes;
     let start = arrive;
-    const slots = place.openingHours[["mon", "tue", "wed", "thu", "fri", "sat", "sun"][(date.getDay() + 6) % 7]];
+    const slots = hoursFor(place, date);
     let ok = false;
     if (slots) {
       for (const [o, c] of slots) {

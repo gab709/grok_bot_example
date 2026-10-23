@@ -5,7 +5,7 @@ Questa guida spiega come aprire RomaFlow e cosa fa ogni schermata e ogni comando
 ## 1. Aprire l'app
 
 - **Online (GitHub Pages):** https://gab709.github.io/grok_bot_example/ (reindirizza a `/app/`; i parametri URL vengono mantenuti, es. https://gab709.github.io/grok_bot_example/app/?demo=1)
-- **In locale:** `cd app && python3 -m http.server 8000`, poi apri http://localhost:8000
+- **In locale:** dalla radice del repository `python3 -m http.server 8000`, poi apri http://localhost:8000/app/ (così l'app legge i dati aggiornati in `/data`; servendo solo `app/` usa la copia di riserva)
 
 Serve la connessione a internet per la mappa (Leaflet e tile Esri; provider configurabile in `app/data/config.json`, con ripiego automatico su OpenStreetMap) e per i font.
 
@@ -52,6 +52,7 @@ Tutti gli elementi interattivi hanno un attributo `data-testid` (per esempio `ct
 - **Riepilogo e "Genera il mio itinerario":** parte un breve overlay con i passi del calcolo, poi si apre l'itinerario.
 
 ### Itinerario
+- **Riga "Dati aggiornati"** sotto il titolo: data e ora (ora di Roma) dell'ultimo aggiornamento automatico dei dati; i livelli di folla restano stimati.
 - **KPI in alto:** coda evitata (minuti), folla media rispetto a un itinerario standard, visite all'ora di punta (folla ≥ 60/100) con RomaFlow invece che con l'itinerario standard, numero di tappe e giorni.
 - **Schede Giorno 1 / Giorno 2:** cambiano timeline e mappa.
 - **Timeline:** per ogni tappa orario di arrivo e uscita, livello di folla (verde basso, giallo medio, rosso alto, con valore 0-100), minuti di coda stimati, "Al coperto", "Prenotazione obbligatoria", vantaggio rispetto all'orario di picco; tra le tappe i tempi a piedi o con i mezzi; pausa pranzo inserita in automatico.

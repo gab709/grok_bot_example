@@ -91,6 +91,17 @@ function go(screen) {
 }
 
 /* ------------------------------------------------------------------ HOME */
+/** Riga "Dati aggiornati" dai metadati dei file dati (orari reali, folla stimata). */
+function dataUpdatedLine() {
+  const m = state.data?.meta || {};
+  const ts = m.calendarUpdatedAt || m.updatedAt;
+  if (!ts) return "";
+  const d = new Date(ts);
+  const txt = isNaN(d) ? ts : d.toLocaleString("it-IT", { timeZone: "Europe/Rome", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  const src = m.liveData ? "dati aggiornati ogni ora" : "copia locale di riserva";
+  return `<p class="data-updated" data-testid="data-updated" title="Orari, prenotazioni e visitatori: fonti ufficiali. Livelli di folla: stima dimostrativa corretta con il trend di interesse Wikipedia.">Dati aggiornati: ${txt} (ora di Roma) · ${src} · folla stimata</p>`;
+}
+
 function renderHome() {
   const col = state.data.placeById.colosseo || state.data.places[0];
   const row = col.crowd.tue;
@@ -283,7 +294,7 @@ function renderPlan() {
   <section class="screen wrap" data-testid="screen-plan">
     <div class="page-head">
       <div><span class="eyebrow">Passo 2 di 3</span><h2>Il tuo itinerario</h2>
-      <p>Ordinato per arrivare nei luoghi quando c'è meno gente, rispettando orari e prenotazioni.</p></div>
+      <p>Ordinato per arrivare nei luoghi quando c'è meno gente, rispettando orari e prenotazioni.</p>${dataUpdatedLine()}</div>
       <button class="btn-primary btn-gold" data-testid="btn-impact">Quanto tempo risparmi? <span class="arrow">→</span></button>
     </div>
     <div class="kpis">

@@ -135,7 +135,14 @@
     "rainUntil": "16:00"
   },
   "dataSources": {
-    "places": "luoghi_roma.json",
+    "_note": "Percorsi relativi ad app/data/. Liste = ordine di tentativi: prima i file aggiornati ogni ora in /data, poi la copia locale di riserva.",
+    "places": [
+      "../../data/luoghi_roma.json",
+      "luoghi_roma.json"
+    ],
+    "calendar": [
+      "../../data/calendario.json"
+    ],
     "placesExtra": "places-extra.json",
     "events": "events.json"
   },

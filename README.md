@@ -21,10 +21,12 @@ https://gab709.github.io/grok_bot_example/ (GitHub Pages, pubblicato dal branch 
 Non serve installare nulla né compilare: è un sito statico (HTML, CSS e JavaScript).
 
 ```bash
-cd app
+# dalla radice del repository (così l'app legge i dati aggiornati in data/)
 python3 -m http.server 8000
-# poi apri http://localhost:8000
+# poi apri http://localhost:8000/app/
 ```
+
+Servendo solo `app/` (`cd app && python3 -m http.server`) l'app funziona con la copia di riserva dei dati.
 
 Versione dimostrativa precompilata: `http://localhost:8000/?demo=1` (altri parametri nella guida demo).
 

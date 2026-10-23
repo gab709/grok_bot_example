@@ -9,9 +9,25 @@ Tutti i dati dell'app stanno in questa cartella. Il codice li legge **solo** tra
 | File | Contenuto |
 |---|---|
 | `config.json` | Zone di partenza, interessi, ritmi di visita, parametri del modello e `dataSources` (quali file leggere) |
-| `luoghi_roma.json` | **Dataset principale dei luoghi** (15 luoghi). Origine: branch `dati-luoghi` di Persona 1 (commit `ddcde2c`, file `data/luoghi_roma.json`), copiato qui senza modifiche. Metodo e fonti in `data/README.md` |
+| `luoghi_roma.json` | **Copia di riserva** del dataset dei luoghi di Persona 1 (`data/luoghi_roma.json`, aggiornata al 23/10/2026 12:52). La sorgente principale è il file live in `/data`. Metodo e fonti in `data/README.md` |
 | `places-extra.json` | Arricchimento per la sola interfaccia, per id: emoji, descrizione breve, interessi, `indoor`, `peakDelayMinutes` (stima) |
 | `events.json` | Eventi che alzano la folla prevista (udienza del mercoledì, prima domenica gratuita, mercato) - dimostrativi |
+
+## Sorgenti live e riserva (dal 23/10/2026)
+
+`config.json` → `dataSources` accetta liste di percorsi (relativi a `app/data/`), provati in ordine:
+
+- `places`: `../../data/luoghi_roma.json` (file di Persona 1 aggiornato **ogni ora** dal workflow `aggiorna-dati.yml`), poi la copia di riserva `app/data/luoghi_roma.json`.
+- `calendar`: `../../data/calendario.json` (60 giorni). Se manca, si usano gli orari di `luoghi_roma.json` (stagione corrente).
+
+Le richieste usano `cache: "no-cache"`, quindi gli aggiornamenti orari compaiono senza copie manuali. In locale servire la **radice del repository** (`python3 -m http.server` nella radice, poi `/app/`) per leggere `/data`; servendo solo `app/` si usa la copia di riserva (con un 404 innocuo in console).
+
+**Campi nuovi usati dall'adapter:**
+- `crowd_weekday`/`crowd_weekend` sono già corretti (curva base × `crowd_corrections.wikipedia_trend`, eventuale fusione Flickr). Se mancano, l'adapter li ricalcola da `crowd_weekday_base`/`crowd_weekend_base` × `wikipedia_trend`. Le correzioni sono esposte in `place.crowdCorrections` (`wikipediaTrend`, `flickrBlend`, `flickrPhotos`).
+- **Orari stagionali per data:** `hoursFor(place, date)` usa `calendario.json → giorni[].luoghi[id].open` per le date coperte (es. Colosseo 8:30-16:30 dal 25/10/2026), altrimenti gli orari di `luoghi_roma.json`.
+- **"Dati aggiornati"**: riga nell'itinerario da `calendario.meta.generated_at` (o `luoghi_roma.meta.generated_at`), con l'indicazione se i dati sono quelli live o la copia di riserva.
+
+Non ancora usati: `meteo_roma.json` (meteo reale), gli eventi/fattori di `calendario.json` (l'app usa ancora `events.json`), `crowd` giornaliero del calendario.
 
 ## Formato A: `luoghi_roma.json` (supportato nativamente)
 

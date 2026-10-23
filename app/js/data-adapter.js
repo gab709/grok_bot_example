@@ -27,10 +27,24 @@ export const WEEKDAY_LABELS = { mon: "Lun", tue: "Mar", wed: "Mer", thu: "Gio", 
 const BASE = new URL("../data/", import.meta.url);
 
 async function fetchJson(name) {
-  const res = await fetch(new URL(name, BASE));
+  const res = await fetch(new URL(name, BASE), { cache: "no-cache" });
   if (!res.ok) throw new Error(`Impossibile caricare ${name} (${res.status})`);
   return res.json();
 }
+
+/** Prova i percorsi in ordine (string o array) e restituisce { json, from }. */
+async function fetchFirst(names) {
+  const list = Array.isArray(names) ? names : [names];
+  let last;
+  for (const n of list) {
+    try { return { json: await fetchJson(n), from: n }; } catch (e) { last = e; console.info(`[dati] ${n} non disponibile, provo il successivo`); }
+  }
+  throw last || new Error("Nessuna sorgente dati");
+}
+
+// Orari del giorno da calendario.json (stagione applicata per data): "YYYY-MM-DD" -> { placeId: [[o,c]] | null }
+let DAY_HOURS = new Map();
+export const dateKey = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
 /**
  * Legge le sorgenti grezze. I nomi dei file sono in config.json -> dataSources.
@@ -39,12 +53,13 @@ async function fetchJson(name) {
 async function fetchRaw() {
   const config = await fetchJson("config.json");
   const src = { places: "luoghi_roma.json", placesExtra: "places-extra.json", events: "events.json", ...(config.dataSources || {}) };
-  const [places, extra, events] = await Promise.all([
-    fetchJson(src.places),
+  const [placesRes, extra, events, calendar] = await Promise.all([
+    fetchFirst(src.places),
     fetchJson(src.placesExtra).catch(() => ({ places: {} })),
     fetchJson(src.events).catch(() => ({ events: [] })),
+    src.calendar ? fetchFirst(src.calendar).then((r) => r.json).catch(() => null) : null,
   ]);
-  return { places, extra: extra.places || {}, config, events };
+  return { places: placesRes.json, placesFrom: placesRes.from, extra: extra.places || {}, config, events, calendar };
 }
 
 export const toMinutes = (hhmm) => {
@@ -80,7 +95,13 @@ function fromLuoghiRoma(p, extra) {
     hours.forEach((h, i) => (row[h] = vals[i] ?? 0));
     return row;
   };
-  const wk = toRow(p.crowd_weekday), we = toRow(p.crowd_weekend || p.crowd_weekday);
+  // Correzioni trasparenti (data/README.md): crowd_weekday/weekend = curva base x wikipedia_trend
+  // (eventuale fusione Flickr già inclusa). Se mancano le curve corrette, le ricalcola dalla base.
+  const corr = p.crowd_corrections || {};
+  const trend = Number(corr.wikipedia_trend) || 1;
+  const corrected = (v, base) => v || (base ? base.map((x) => Math.min(100, Math.round(x * trend))) : null);
+  const cwk = corrected(p.crowd_weekday, p.crowd_weekday_base);
+  const wk = toRow(cwk), we = toRow(corrected(p.crowd_weekend, p.crowd_weekend_base) || cwk);
   const openingHours = {};
   for (const [it, en] of Object.entries(IT_DAYS)) {
     const v = p.opening_hours?.[it];
@@ -107,6 +128,7 @@ function fromLuoghiRoma(p, extra) {
     popularity: pop,
     crowd: { mon: wk, tue: wk, wed: wk, thu: wk, fri: wk, sat: we, sun: we },
     crowdSource: p.crowd_source || "stima dimostrativa",
+    crowdCorrections: { wikipediaTrend: trend, flickrBlend: !!corr.flickr_blend, flickrPhotos: corr.flickr_photos_07_22 ?? null },
     sources: p.sources || {},
     emoji: def.emoji,
     indoor: def.indoor,
@@ -147,9 +169,22 @@ function normalizePlace(p, extras) {
 export async function loadData() {
   const raw = await fetchRaw();
   const places = raw.places.places.map((p) => normalizePlace(p, raw.extra));
+  DAY_HOURS = new Map();
+  for (const g of raw.calendar?.giorni || []) {
+    const m = {};
+    for (const [id, l] of Object.entries(g.luoghi || {})) m[id] = l.open ? [[toMinutes(l.open[0]), toMinutes(l.open[1])]] : null;
+    DAY_HOURS.set(g.date, m);
+  }
   const events = (raw.events.events || []).map((e) => ({ ...e, fromMin: toMinutes(e.from), toMin: toMinutes(e.to) }));
   return {
-    meta: { ...raw.places.meta, crowdStatus: "dimostrativi" },
+    meta: {
+      ...raw.places.meta,
+      crowdStatus: "dimostrativi",
+      updatedAt: raw.places.meta?.generated_at || null,
+      calendarUpdatedAt: raw.calendar?.meta?.generated_at || null,
+      liveData: String(raw.placesFrom).startsWith("../"),
+      seasonalDays: DAY_HOURS.size,
+    },
     places,
     placeById: Object.fromEntries(places.map((p) => [p.id, p])),
     config: raw.config,
@@ -187,14 +222,21 @@ export function eventsFor(data, place, date) {
 }
 
 /** Intervallo di apertura che contiene [start, end], oppure null. */
+/** Fasce di apertura del luogo in quella data: orari stagionali da calendario.json se la data è coperta, altrimenti orari del dataset. */
+export function hoursFor(place, date) {
+  const day = DAY_HOURS.get(dateKey(date));
+  if (day && place.id in day) return day[place.id];
+  return place.openingHours[weekdayKey(date)];
+}
+
 export function openWindow(place, date, start, end) {
-  const slots = place.openingHours[weekdayKey(date)];
+  const slots = hoursFor(place, date);
   if (!slots) return null;
   for (const [o, c] of slots) if (start >= o && end <= c) return [o, c];
   return null;
 }
-export const isClosedOn = (place, date) => !place.openingHours[weekdayKey(date)];
+export const isClosedOn = (place, date) => !hoursFor(place, date);
 export const firstOpening = (place, date) => {
-  const s = place.openingHours[weekdayKey(date)];
+  const s = hoursFor(place, date);
   return s ? s[0][0] : null;
 };
