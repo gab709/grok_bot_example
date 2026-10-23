@@ -4,7 +4,7 @@ Questa guida spiega come aprire RomaFlow e cosa fa ogni schermata e ogni comando
 
 ## 1. Aprire l'app
 
-- **Online (GitHub Pages):** https://gab709.github.io/grok_bot_example/
+- **Online (GitHub Pages):** https://gab709.github.io/grok_bot_example/ (reindirizza a `/app/`; i parametri URL vengono mantenuti, es. https://gab709.github.io/grok_bot_example/app/?demo=1)
 - **In locale:** `cd app && python3 -m http.server 8000`, poi apri http://localhost:8000
 
 Serve la connessione a internet per la mappa (Leaflet e tile Esri; provider configurabile in `app/data/config.json`, con ripiego automatico su OpenStreetMap) e per i font.

@@ -12,6 +12,10 @@ Il pitch completo è in [`docs/01-pitch.md`](docs/01-pitch.md); la guida per usa
 4. **Impatto:** minuti di coda evitati rispetto a un itinerario standard, confronto tappa per tappa e mappa di calore della folla per giorno e ora.
 5. **Imprevisti in tempo reale:** "Sta piovendo", "affollato ora", "in ritardo": l'app ricalcola il resto della giornata.
 
+## Provarlo online
+
+https://gab709.github.io/grok_bot_example/ (GitHub Pages, pubblicato dal branch `main`; la radice reindirizza a `app/`). Demo precompilata: https://gab709.github.io/grok_bot_example/app/?demo=1
+
 ## Avviarlo in locale
 
 Non serve installare nulla né compilare: è un sito statico (HTML, CSS e JavaScript).
