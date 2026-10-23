@@ -1,0 +1,1654 @@
+{
+  "meta": {
+    "dataset": "RomaFlow - luoghi iconici di Roma",
+    "version": "1.0",
+    "generated": "2026-10-23",
+    "crowd_scale": "0-100 (0 = chiuso o vuoto, 100 = picco massimo relativo nel dataset)",
+    "crowd_hours_meaning": "Ogni valore si riferisce alla fascia che inizia all'ora indicata (7 = 07:00-07:59 ... 22 = 22:00-22:59)",
+    "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
+    "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
+    "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
+    "opening_hours_season": "Orari di riferimento: stagione invernale (da fine ottobre 2026). Le variazioni stagionali sono in opening_hours_note.",
+    "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
+  },
+  "places": [
+    {
+      "id": "colosseo",
+      "name": "Colosseo",
+      "category": "monumento all'aperto",
+      "lat": 41.8902,
+      "lon": 12.4922,
+      "opening_hours": {
+        "lun": [
+          "08:30",
+          "16:30"
+        ],
+        "mar": [
+          "08:30",
+          "16:30"
+        ],
+        "mer": [
+          "08:30",
+          "16:30"
+        ],
+        "gio": [
+          "08:30",
+          "16:30"
+        ],
+        "ven": [
+          "08:30",
+          "16:30"
+        ],
+        "sab": [
+          "08:30",
+          "16:30"
+        ],
+        "dom": [
+          "08:30",
+          "16:30"
+        ]
+      },
+      "opening_hours_note": "Orario invernale dal 25/10/2026 al 28/02/2027 (ultimo ingresso 15:30). Dal 1 al 24/10/2026 8:30-18:30; 29/03-30/09/2026 8:30-19:15. Chiuso 25/12 e 1/1. Gratis la prima domenica del mese (senza prenotazione, folla molto alta).",
+      "booking": "obbligatoria",
+      "booking_note": "Prenotazione obbligatoria della fascia oraria per il Colosseo (vendita 30 giorni prima).",
+      "visit_duration_min": 90,
+      "annual_visitors": 14733395,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato MiC per l'intero Parco archeologico del Colosseo (Colosseo + Foro Romano + Palatino + Domus Aurea ecc.), istituti a pagamento.",
+      "popularity": 0.998,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        20,
+        50,
+        80,
+        100,
+        95,
+        80,
+        75,
+        80,
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        22,
+        60,
+        93,
+        100,
+        100,
+        99,
+        93,
+        93,
+        82,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://colosseo.it/orari-e-biglietti/",
+        "opening_hours_status": "verificato",
+        "booking": "https://colosseo.it/orari-e-biglietti/",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "foro_romano_palatino",
+      "name": "Foro Romano e Palatino",
+      "category": "monumento all'aperto",
+      "lat": 41.8925,
+      "lon": 12.4853,
+      "opening_hours": {
+        "lun": [
+          "09:00",
+          "16:30"
+        ],
+        "mar": [
+          "09:00",
+          "16:30"
+        ],
+        "mer": [
+          "09:00",
+          "16:30"
+        ],
+        "gio": [
+          "09:00",
+          "16:30"
+        ],
+        "ven": [
+          "09:00",
+          "16:30"
+        ],
+        "sab": [
+          "09:00",
+          "16:30"
+        ],
+        "dom": [
+          "09:00",
+          "16:30"
+        ]
+      },
+      "opening_hours_note": "Apre alle 9:00; chiusura del Parco 16:30 dal 25/10/2026 (18:30 fino al 24/10). Chiuso 25/12 e 1/1.",
+      "booking": "obbligatoria",
+      "booking_note": "Accesso con biglietto del Parco prenotato online.",
+      "visit_duration_min": 120,
+      "annual_visitors": null,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Non disponibile separatamente: incluso nel dato del Parco archeologico del Colosseo (14.733.395 nel 2024).",
+      "popularity": 0.85,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        42,
+        68,
+        85,
+        81,
+        68,
+        64,
+        68,
+        60,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        51,
+        79,
+        94,
+        94,
+        84,
+        79,
+        79,
+        70,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://colosseo.it/orari-e-biglietti/",
+        "opening_hours_status": "verificato",
+        "booking": "https://colosseo.it/orari-e-biglietti/",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "pantheon",
+      "name": "Pantheon",
+      "category": "monumento all'aperto",
+      "lat": 41.8986,
+      "lon": 12.4769,
+      "opening_hours": {
+        "lun": [
+          "09:00",
+          "19:00"
+        ],
+        "mar": [
+          "09:00",
+          "19:00"
+        ],
+        "mer": [
+          "09:00",
+          "19:00"
+        ],
+        "gio": [
+          "09:00",
+          "19:00"
+        ],
+        "ven": [
+          "09:00",
+          "19:00"
+        ],
+        "sab": [
+          "09:00",
+          "19:00"
+        ],
+        "dom": [
+          "09:00",
+          "19:00"
+        ]
+      },
+      "opening_hours_note": "Tutti i giorni 9-19, biglietteria fino alle 18, ultimo ingresso 18:30. Durante le Messe (sab/prefestivi 17:00, dom/festivi 10:30) ingresso libero solo per il culto. Chiuso 25/12 e 1/1. Biglietto 7 EUR dal 1/7/2026. Classificato qui come monumento (e' anche basilica).",
+      "booking": "consigliata",
+      "booking_note": "Biglietto nominativo con fascia oraria su museiitaliani.it o in loco; niente saltafila.",
+      "visit_duration_min": 30,
+      "annual_visitors": 4086947,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato MiC 2024 (primo anno interamente a pagamento).",
+      "popularity": 0.841,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        42,
+        67,
+        84,
+        80,
+        67,
+        63,
+        67,
+        59,
+        46,
+        34,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        51,
+        79,
+        93,
+        93,
+        83,
+        79,
+        79,
+        69,
+        56,
+        42,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://direzionemuseiroma.cultura.gov.it/pantheon/",
+        "opening_hours_status": "verificato",
+        "booking": "https://direzionemuseiroma.cultura.gov.it/pantheon/",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "fontana_di_trevi",
+      "name": "Fontana di Trevi",
+      "category": "piazza",
+      "lat": 41.9009,
+      "lon": 12.4833,
+      "opening_hours": {
+        "lun": [
+          "00:00",
+          "24:00"
+        ],
+        "mar": [
+          "00:00",
+          "24:00"
+        ],
+        "mer": [
+          "00:00",
+          "24:00"
+        ],
+        "gio": [
+          "00:00",
+          "24:00"
+        ],
+        "ven": [
+          "00:00",
+          "24:00"
+        ],
+        "sab": [
+          "00:00",
+          "24:00"
+        ],
+        "dom": [
+          "00:00",
+          "24:00"
+        ]
+      },
+      "opening_hours_note": "Spazio pubblico sempre accessibile. Roma Capitale ha introdotto un accesso regolato/contingentato al bordo vasca (con biglietto per non residenti): regole e orari da verificare prima dell'uso.",
+      "booking": "non necessaria (da verificare per l'accesso al bordo vasca)",
+      "booking_note": "",
+      "visit_duration_min": 20,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale pubblico di visitatori annui verificato.",
+      "popularity": 1.0,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        5,
+        10,
+        20,
+        40,
+        60,
+        70,
+        70,
+        65,
+        65,
+        70,
+        80,
+        90,
+        100,
+        95,
+        80,
+        60
+      ],
+      "crowd_weekend": [
+        6,
+        11,
+        22,
+        50,
+        72,
+        88,
+        88,
+        82,
+        82,
+        88,
+        99,
+        100,
+        100,
+        100,
+        99,
+        77
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "non verificato",
+        "opening_hours_status": "non verificato",
+        "booking": "non verificato",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "musei_vaticani",
+      "name": "Musei Vaticani e Cappella Sistina",
+      "category": "museo",
+      "lat": 41.9065,
+      "lon": 12.4536,
+      "opening_hours": {
+        "lun": [
+          "08:00",
+          "20:00"
+        ],
+        "mar": [
+          "08:00",
+          "20:00"
+        ],
+        "mer": [
+          "08:00",
+          "20:00"
+        ],
+        "gio": [
+          "08:00",
+          "20:00"
+        ],
+        "ven": [
+          "08:00",
+          "20:00"
+        ],
+        "sab": [
+          "08:00",
+          "20:00"
+        ],
+        "dom": null
+      },
+      "opening_hours_note": "Lun-sab 8-20 (ultimo ingresso 18:00, uscita dalle sale 30 min prima della chiusura). Domenica CHIUSO tranne l'ultima domenica del mese: 9-14 (ultimo ingresso 12:30), gratuito, non prenotabile, code molto lunghe. Chiusi anche 1 e 6/1, 11/2, 19/3, lunedì di Pasqua, 1/5, 29/6, 14-15/8, 1/11, 8/12, 25-26/12. Alcuni venerdì sera aprile-ottobre aperture serali su prenotazione.",
+      "booking": "fortemente consigliata",
+      "booking_note": "Biglietto 20 EUR in loco; prenotazione 'salta la fila' online con sovrapprezzo.",
+      "visit_duration_min": 180,
+      "annual_visitors": 6825436,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato dichiarato dai Musei Vaticani e pubblicato da The Art Newspaper (classifica 2024). Non e' un dato MiC (Stato estero).",
+      "popularity": 0.904,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        27,
+        50,
+        77,
+        90,
+        86,
+        72,
+        77,
+        72,
+        59,
+        41,
+        23,
+        9,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        30,
+        60,
+        89,
+        99,
+        99,
+        89,
+        89,
+        85,
+        70,
+        50,
+        30,
+        10,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://www.museivaticani.va/content/museivaticani/it/info/orari-musei-vaticani.html",
+        "opening_hours_status": "verificato",
+        "booking": "https://www.museivaticani.va/content/museivaticani/it/organizza-visita/tariffe-e-biglietti.html",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://www.theartnewspaper.com/2025/04/01/the-worlds-most-visited-museums-2024-",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "basilica_san_pietro",
+      "name": "Basilica di San Pietro",
+      "category": "chiesa",
+      "lat": 41.9022,
+      "lon": 12.4539,
+      "opening_hours": {
+        "lun": [
+          "07:00",
+          "19:00"
+        ],
+        "mar": [
+          "07:00",
+          "19:00"
+        ],
+        "mer": [
+          "07:00",
+          "19:00"
+        ],
+        "gio": [
+          "07:00",
+          "19:00"
+        ],
+        "ven": [
+          "07:00",
+          "19:00"
+        ],
+        "sab": [
+          "07:00",
+          "19:00"
+        ],
+        "dom": [
+          "07:00",
+          "19:00"
+        ]
+      },
+      "opening_hours_note": "Dal 26/10/2026 al 28/03/2027 7-19; fino al 25/10/2026 7-20. Il mercoledì mattina (udienza generale in piazza, ore 10) e durante celebrazioni papali l'accesso puo' essere limitato o sospeso: da verificare caso per caso.",
+      "booking": "non necessaria",
+      "booking_note": "Ingresso gratuito con controlli di sicurezza (code). Cupola a pagamento.",
+      "visit_duration_min": 75,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale annuo verificato in questa sessione.",
+      "popularity": 0.95,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        14,
+        33,
+        57,
+        81,
+        95,
+        81,
+        57,
+        62,
+        66,
+        62,
+        52,
+        38,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        21,
+        42,
+        73,
+        99,
+        100,
+        94,
+        73,
+        73,
+        78,
+        73,
+        63,
+        47,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://www.basilicasanpietro.va/it/orari",
+        "opening_hours_status": "verificato",
+        "booking": "https://www.basilicasanpietro.va/it/orari",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "piazza_navona",
+      "name": "Piazza Navona",
+      "category": "piazza",
+      "lat": 41.8992,
+      "lon": 12.4731,
+      "opening_hours": {
+        "lun": [
+          "00:00",
+          "24:00"
+        ],
+        "mar": [
+          "00:00",
+          "24:00"
+        ],
+        "mer": [
+          "00:00",
+          "24:00"
+        ],
+        "gio": [
+          "00:00",
+          "24:00"
+        ],
+        "ven": [
+          "00:00",
+          "24:00"
+        ],
+        "sab": [
+          "00:00",
+          "24:00"
+        ],
+        "dom": [
+          "00:00",
+          "24:00"
+        ]
+      },
+      "opening_hours_note": "Spazio pubblico sempre accessibile.",
+      "booking": "non necessaria",
+      "booking_note": "",
+      "visit_duration_min": 30,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale.",
+      "popularity": 0.8,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        4,
+        8,
+        16,
+        32,
+        48,
+        56,
+        56,
+        52,
+        52,
+        56,
+        64,
+        72,
+        80,
+        76,
+        64,
+        48
+      ],
+      "crowd_weekend": [
+        4,
+        9,
+        18,
+        40,
+        57,
+        70,
+        70,
+        66,
+        66,
+        70,
+        79,
+        88,
+        88,
+        88,
+        79,
+        62
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "spazio pubblico",
+        "opening_hours_status": "n/a (spazio pubblico)",
+        "booking": "spazio pubblico",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "piazza_di_spagna",
+      "name": "Piazza di Spagna e Trinità dei Monti",
+      "category": "piazza",
+      "lat": 41.9058,
+      "lon": 12.4823,
+      "opening_hours": {
+        "lun": [
+          "00:00",
+          "24:00"
+        ],
+        "mar": [
+          "00:00",
+          "24:00"
+        ],
+        "mer": [
+          "00:00",
+          "24:00"
+        ],
+        "gio": [
+          "00:00",
+          "24:00"
+        ],
+        "ven": [
+          "00:00",
+          "24:00"
+        ],
+        "sab": [
+          "00:00",
+          "24:00"
+        ],
+        "dom": [
+          "00:00",
+          "24:00"
+        ]
+      },
+      "opening_hours_note": "Piazza e Scalinata sempre accessibili (vietato sedersi sui gradini). Orari della chiesa di Trinità dei Monti non verificati.",
+      "booking": "non necessaria",
+      "booking_note": "",
+      "visit_duration_min": 30,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale.",
+      "popularity": 0.85,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        4,
+        8,
+        17,
+        34,
+        51,
+        60,
+        60,
+        55,
+        55,
+        60,
+        68,
+        76,
+        85,
+        81,
+        68,
+        51
+      ],
+      "crowd_weekend": [
+        5,
+        9,
+        19,
+        42,
+        61,
+        75,
+        75,
+        70,
+        70,
+        75,
+        84,
+        94,
+        94,
+        94,
+        84,
+        65
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "spazio pubblico",
+        "opening_hours_status": "n/a (spazio pubblico); chiesa non verificata",
+        "booking": "spazio pubblico",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "galleria_borghese",
+      "name": "Galleria Borghese",
+      "category": "museo",
+      "lat": 41.9142,
+      "lon": 12.4921,
+      "opening_hours": {
+        "lun": null,
+        "mar": [
+          "09:00",
+          "19:00"
+        ],
+        "mer": [
+          "09:00",
+          "19:00"
+        ],
+        "gio": [
+          "09:00",
+          "19:00"
+        ],
+        "ven": [
+          "09:00",
+          "19:00"
+        ],
+        "sab": [
+          "09:00",
+          "19:00"
+        ],
+        "dom": [
+          "09:00",
+          "19:00"
+        ]
+      },
+      "opening_hours_note": "Mar-dom 9-19, lunedi' chiuso; ingressi a turni (ultimo turno 17:00/17:45 secondo la fonte). Orario da fonte del concessionario biglietteria, da ricontrollare sul sito ufficiale galleriaborghese.cultura.gov.it.",
+      "booking": "obbligatoria",
+      "booking_note": "Prenotazione obbligatoria a turni, numero limitato di ingressi.",
+      "visit_duration_min": 120,
+      "annual_visitors": 599104,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato MiC 2024.",
+      "popularity": 0.607,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        33,
+        52,
+        61,
+        58,
+        49,
+        52,
+        49,
+        39,
+        27,
+        15,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        40,
+        60,
+        67,
+        67,
+        60,
+        60,
+        57,
+        47,
+        33,
+        20,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://www.gebart.it/musei/galleria-borghese/",
+        "opening_hours_status": "parzialmente verificato (fonte secondaria)",
+        "booking": "https://www.gebart.it/musei/galleria-borghese/",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "castel_santangelo",
+      "name": "Castel Sant'Angelo",
+      "category": "museo",
+      "lat": 41.9031,
+      "lon": 12.4663,
+      "opening_hours": {
+        "lun": null,
+        "mar": [
+          "09:00",
+          "19:30"
+        ],
+        "mer": [
+          "09:00",
+          "19:30"
+        ],
+        "gio": [
+          "09:00",
+          "19:30"
+        ],
+        "ven": [
+          "09:00",
+          "19:30"
+        ],
+        "sab": [
+          "09:00",
+          "19:30"
+        ],
+        "dom": [
+          "09:00",
+          "19:30"
+        ]
+      },
+      "opening_hours_note": "Mar-dom 9-19:30 (ultimo ingresso 18:30). Lunedi' chiuso, eccetto il primo lunedi' del mese nel 2026: 14-20 (ultimo ingresso 19), biglietto 5 EUR.",
+      "booking": "consigliata",
+      "booking_note": "",
+      "visit_duration_min": 90,
+      "annual_visitors": 1315063,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato MiC 2024 (Museo Nazionale di Castel Sant'Angelo e Passetto di Borgo).",
+      "popularity": 0.703,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        39,
+        60,
+        70,
+        67,
+        56,
+        60,
+        56,
+        46,
+        32,
+        18,
+        7,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        46,
+        70,
+        77,
+        77,
+        70,
+        70,
+        66,
+        54,
+        39,
+        23,
+        8,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://direzionemuseiroma.cultura.gov.it/museo-nazionale-di-castel-santangelo/",
+        "opening_hours_status": "verificato (sintesi da ricerca, pagina ufficiale)",
+        "booking": "https://direzionemuseiroma.cultura.gov.it/museo-nazionale-di-castel-santangelo/",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "trastevere",
+      "name": "Trastevere",
+      "category": "quartiere",
+      "lat": 41.8897,
+      "lon": 12.4699,
+      "opening_hours": {
+        "lun": [
+          "00:00",
+          "24:00"
+        ],
+        "mar": [
+          "00:00",
+          "24:00"
+        ],
+        "mer": [
+          "00:00",
+          "24:00"
+        ],
+        "gio": [
+          "00:00",
+          "24:00"
+        ],
+        "ven": [
+          "00:00",
+          "24:00"
+        ],
+        "sab": [
+          "00:00",
+          "24:00"
+        ],
+        "dom": [
+          "00:00",
+          "24:00"
+        ]
+      },
+      "opening_hours_note": "Quartiere sempre accessibile; affollamento serale legato a locali e ristoranti.",
+      "booking": "non necessaria",
+      "booking_note": "",
+      "visit_duration_min": 120,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale.",
+      "popularity": 0.75,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        4,
+        8,
+        11,
+        15,
+        22,
+        30,
+        38,
+        30,
+        26,
+        26,
+        30,
+        41,
+        56,
+        71,
+        75,
+        68
+      ],
+      "crowd_weekend": [
+        4,
+        8,
+        12,
+        21,
+        33,
+        45,
+        54,
+        45,
+        41,
+        41,
+        45,
+        58,
+        70,
+        82,
+        82,
+        82
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "spazio pubblico",
+        "opening_hours_status": "n/a (spazio pubblico)",
+        "booking": "spazio pubblico",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "campo_de_fiori",
+      "name": "Campo de' Fiori",
+      "category": "piazza",
+      "lat": 41.8956,
+      "lon": 12.4722,
+      "opening_hours": {
+        "lun": [
+          "00:00",
+          "24:00"
+        ],
+        "mar": [
+          "00:00",
+          "24:00"
+        ],
+        "mer": [
+          "00:00",
+          "24:00"
+        ],
+        "gio": [
+          "00:00",
+          "24:00"
+        ],
+        "ven": [
+          "00:00",
+          "24:00"
+        ],
+        "sab": [
+          "00:00",
+          "24:00"
+        ],
+        "dom": [
+          "00:00",
+          "24:00"
+        ]
+      },
+      "opening_hours_note": "Piazza sempre accessibile. Mercato al mattino dal lunedi' al sabato (orari indicativi, non verificati).",
+      "booking": "non necessaria",
+      "booking_note": "",
+      "visit_duration_min": 30,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale.",
+      "popularity": 0.6,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        3,
+        6,
+        12,
+        24,
+        36,
+        42,
+        42,
+        39,
+        39,
+        42,
+        48,
+        54,
+        60,
+        57,
+        48,
+        36
+      ],
+      "crowd_weekend": [
+        3,
+        7,
+        13,
+        30,
+        43,
+        53,
+        53,
+        50,
+        50,
+        53,
+        59,
+        66,
+        66,
+        66,
+        59,
+        46
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "spazio pubblico",
+        "opening_hours_status": "n/a (spazio pubblico); mercato non verificato",
+        "booking": "spazio pubblico",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "bocca_della_verita",
+      "name": "Bocca della Verità (Santa Maria in Cosmedin)",
+      "category": "chiesa",
+      "lat": 41.8881,
+      "lon": 12.4816,
+      "opening_hours": {
+        "lun": [
+          "09:30",
+          "17:50"
+        ],
+        "mar": [
+          "09:30",
+          "17:50"
+        ],
+        "mer": [
+          "09:30",
+          "17:50"
+        ],
+        "gio": [
+          "09:30",
+          "17:50"
+        ],
+        "ven": [
+          "09:30",
+          "17:50"
+        ],
+        "sab": [
+          "09:30",
+          "17:50"
+        ],
+        "dom": [
+          "09:30",
+          "17:50"
+        ]
+      },
+      "opening_hours_note": "Tutti i giorni 9:30-17:50 secondo Turismo Roma; alcune fonti indicano una pausa 13-14 e accesso regolato durante la liturgia domenicale (10:30). Chiuso 1/1. Da riverificare.",
+      "booking": "non necessaria",
+      "booking_note": "Ingresso gratuito (offerta), coda per la foto.",
+      "visit_duration_min": 20,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Nessun dato ufficiale.",
+      "popularity": 0.55,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        33,
+        47,
+        55,
+        47,
+        33,
+        36,
+        38,
+        36,
+        30,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        42,
+        57,
+        61,
+        54,
+        42,
+        42,
+        45,
+        42,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://www.turismoroma.it/it/luoghi/basilica-di-santa-maria-cosmedin",
+        "opening_hours_status": "parzialmente verificato",
+        "booking": "https://www.turismoroma.it/it/luoghi/basilica-di-santa-maria-cosmedin",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "terme_di_caracalla",
+      "name": "Terme di Caracalla",
+      "category": "monumento all'aperto",
+      "lat": 41.8791,
+      "lon": 12.4924,
+      "opening_hours": {
+        "lun": null,
+        "mar": [
+          "09:00",
+          "17:30"
+        ],
+        "mer": [
+          "09:00",
+          "17:30"
+        ],
+        "gio": [
+          "09:00",
+          "17:30"
+        ],
+        "ven": [
+          "09:00",
+          "17:30"
+        ],
+        "sab": [
+          "09:00",
+          "17:30"
+        ],
+        "dom": [
+          "09:00",
+          "17:30"
+        ]
+      },
+      "opening_hours_note": "Lunedi' chiuso. Dal 25/10/2026 9-17:30; fino al 24/10/2026 9-18:30.",
+      "booking": "consigliata",
+      "booking_note": "",
+      "visit_duration_min": 90,
+      "annual_visitors": 258687,
+      "annual_visitors_year": 2024,
+      "annual_visitors_note": "Dato MiC 2024.",
+      "popularity": 0.504,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        25,
+        40,
+        50,
+        48,
+        40,
+        38,
+        40,
+        35,
+        28,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        30,
+        47,
+        55,
+        55,
+        50,
+        47,
+        47,
+        42,
+        33,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://cultura.gov.it/luogo/terme-di-caracalla",
+        "opening_hours_status": "verificato (sintesi da ricerca)",
+        "booking": "https://cultura.gov.it/luogo/terme-di-caracalla",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
+        "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    },
+    {
+      "id": "musei_capitolini",
+      "name": "Musei Capitolini",
+      "category": "museo",
+      "lat": 41.893,
+      "lon": 12.4826,
+      "opening_hours": {
+        "lun": [
+          "09:30",
+          "19:30"
+        ],
+        "mar": [
+          "09:30",
+          "19:30"
+        ],
+        "mer": [
+          "09:30",
+          "19:30"
+        ],
+        "gio": [
+          "09:30",
+          "19:30"
+        ],
+        "ven": [
+          "09:30",
+          "19:30"
+        ],
+        "sab": [
+          "09:30",
+          "19:30"
+        ],
+        "dom": [
+          "09:30",
+          "19:30"
+        ]
+      },
+      "opening_hours_note": "Tutti i giorni 9:30-19:30, ultimo ingresso un'ora prima. Chiusi 1/5 e 25/12.",
+      "booking": "consigliata",
+      "booking_note": "",
+      "visit_duration_min": 120,
+      "annual_visitors": null,
+      "annual_visitors_year": null,
+      "annual_visitors_note": "Museo civico (Roma Capitale), non nelle statistiche MiC. La stampa (Il Messaggero, 2026) cita 'circa un milione' nel 2025: valore giornalistico, non usato come dato ufficiale.",
+      "popularity": 0.55,
+      "crowd_hours": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "crowd_weekday": [
+        0,
+        0,
+        30,
+        47,
+        55,
+        52,
+        44,
+        47,
+        44,
+        36,
+        25,
+        14,
+        6,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        36,
+        54,
+        61,
+        61,
+        54,
+        54,
+        51,
+        42,
+        30,
+        18,
+        6,
+        0,
+        0,
+        0
+      ],
+      "sources": {
+        "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
+        "opening_hours": "https://www.museicapitolini.org/it/informazioni_pratiche/orari_e_indirizzi",
+        "opening_hours_status": "verificato (sintesi da ricerca, sito ufficiale)",
+        "booking": "https://www.museicapitolini.org/it/informazioni_pratiche/orari_e_indirizzi",
+        "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
+        "annual_visitors": "non disponibile (stampa: https://www.ilmessaggero.it/roma/centro_storico/roma_incassi_arte_colosseo_fontana_trevi_pantheon-9487124.html)",
+        "popularity": "stima manuale (nessun dato visitatori ufficiale)",
+        "crowd": "stima dimostrativa"
+      },
+      "crowd_source": "stima dimostrativa"
+    }
+  ]
+}

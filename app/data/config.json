@@ -1,0 +1,200 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "dataStatus": "dimostrativi",
+    "note": "Parametri dell'app: zone di partenza, interessi, ritmi e parametri del modello. Modificabili senza toccare il codice."
+  },
+  "startAreas": [
+    {
+      "id": "termini",
+      "name": "Stazione Termini",
+      "emoji": "🚉",
+      "coordinates": {
+        "lat": 41.901,
+        "lng": 12.5016
+      }
+    },
+    {
+      "id": "centro-storico",
+      "name": "Centro storico",
+      "emoji": "🏛️",
+      "coordinates": {
+        "lat": 41.899,
+        "lng": 12.4768
+      }
+    },
+    {
+      "id": "monti",
+      "name": "Monti",
+      "emoji": "🍷",
+      "coordinates": {
+        "lat": 41.8955,
+        "lng": 12.4935
+      }
+    },
+    {
+      "id": "prati",
+      "name": "Prati / Vaticano",
+      "emoji": "⛪",
+      "coordinates": {
+        "lat": 41.9073,
+        "lng": 12.4626
+      }
+    },
+    {
+      "id": "trastevere",
+      "name": "Trastevere",
+      "emoji": "🌿",
+      "coordinates": {
+        "lat": 41.889,
+        "lng": 12.469
+      }
+    }
+  ],
+  "interests": [
+    {
+      "id": "storia-antica",
+      "name": "Storia antica",
+      "emoji": "🏛️"
+    },
+    {
+      "id": "arte",
+      "name": "Arte",
+      "emoji": "🎨"
+    },
+    {
+      "id": "chiese",
+      "name": "Chiese",
+      "emoji": "⛪"
+    },
+    {
+      "id": "piazze",
+      "name": "Piazze e fontane",
+      "emoji": "⛲"
+    },
+    {
+      "id": "cibo",
+      "name": "Cibo",
+      "emoji": "🍝"
+    },
+    {
+      "id": "autentica",
+      "name": "Roma autentica",
+      "emoji": "🌿"
+    },
+    {
+      "id": "panorami",
+      "name": "Panorami",
+      "emoji": "🌅"
+    }
+  ],
+  "paces": [
+    {
+      "id": "rilassato",
+      "name": "Rilassato",
+      "emoji": "🐢",
+      "description": "Poche tappe, pause lunghe",
+      "maxStops": 4,
+      "dayStart": "09:00",
+      "dayEnd": "19:00",
+      "lunchMinutes": 75,
+      "walkSpeedKmh": 4.0
+    },
+    {
+      "id": "equilibrato",
+      "name": "Equilibrato",
+      "emoji": "🚶",
+      "description": "Il giusto mix",
+      "maxStops": 5,
+      "dayStart": "08:30",
+      "dayEnd": "19:30",
+      "lunchMinutes": 60,
+      "walkSpeedKmh": 4.5
+    },
+    {
+      "id": "intenso",
+      "name": "Intenso",
+      "emoji": "⚡",
+      "description": "Vedere tutto",
+      "maxStops": 7,
+      "dayStart": "08:00",
+      "dayEnd": "21:00",
+      "lunchMinutes": 45,
+      "walkSpeedKmh": 5.0
+    }
+  ],
+  "model": {
+    "detourFactor": 1.3,
+    "transitThresholdMinutes": 30,
+    "transitFixedMinutes": 12,
+    "transitSpeedKmh": 18,
+    "crowdWeight": 0.15,
+    "idleWeight": 0.3,
+    "lunchAfter": "12:45",
+    "baselineDayStart": "09:30",
+    "rainUntil": "16:00"
+  },
+  "dataSources": {
+    "places": "luoghi_roma.json",
+    "placesExtra": "places-extra.json",
+    "events": "events.json"
+  },
+  "map": {
+    "_note": "Provider delle tile Leaflet. 'provider' = id in 'providers'; 'fallback' = ordine di ripiego se le tile non si caricano. Per un provider con chiave inserire 'apiKey' (sostituisce {apiKey} nell'URL). Vedi SCHEMA.md.",
+    "provider": "esri-dark",
+    "fallback": [
+      "osm-dark",
+      "carto-dark"
+    ],
+    "apiKey": "",
+    "center": [
+      41.898,
+      12.48
+    ],
+    "zoom": 14,
+    "providers": {
+      "esri-dark": {
+        "name": "Esri World Dark Gray (senza chiave)",
+        "tileUrl": "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
+        "labelsUrl": "https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+        "attribution": "Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors",
+        "maxZoom": 16
+      },
+      "osm-dark": {
+        "name": "OpenStreetMap standard (scurito via CSS, senza chiave)",
+        "tileUrl": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+        "maxZoom": 19,
+        "darkFilter": true
+      },
+      "carto-dark": {
+        "name": "CARTO Dark Matter",
+        "tileUrl": "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        "subdomains": "abcd",
+        "attribution": "&copy; OpenStreetMap contributors &copy; CARTO",
+        "maxZoom": 19
+      },
+      "maptiler-dark": {
+        "name": "MapTiler Dataviz Dark (chiave richiesta)",
+        "tileUrl": "https://api.maptiler.com/maps/dataviz-dark/256/{z}/{x}/{y}.png?key={apiKey}",
+        "attribution": "&copy; MapTiler &copy; OpenStreetMap contributors",
+        "maxZoom": 19,
+        "requiresKey": true
+      },
+      "stadia-dark": {
+        "name": "Stadia Alidade Smooth Dark (chiave richiesta)",
+        "tileUrl": "https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key={apiKey}",
+        "attribution": "&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap contributors",
+        "maxZoom": 19,
+        "requiresKey": true
+      },
+      "mapbox-dark": {
+        "name": "Mapbox Dark (token richiesto)",
+        "tileUrl": "https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/256/{z}/{x}/{y}@2x?access_token={apiKey}",
+        "attribution": "&copy; Mapbox &copy; OpenStreetMap contributors",
+        "maxZoom": 19,
+        "requiresKey": true
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>RomaFlow · Roma al momento giusto</title>
+  <meta name="description" content="RomaFlow pianifica la tua visita a Roma usando i flussi storici di persone: vedi di più, fai meno fila." />
+  <meta name="theme-color" content="#0b1426" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230b1426'/><path d='M14 46c8-20 28-20 36 0' stroke='%23e3b866' stroke-width='6' fill='none' stroke-linecap='round'/><circle cx='32' cy='22' r='6' fill='%23d4683a'/></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="topbar" data-testid="topbar">
+    <button class="brand" data-testid="brand-home" aria-label="RomaFlow, torna all'inizio">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M12 48c8-22 32-22 40 0" stroke="currentColor" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M22 48c4-10 16-10 20 0" stroke="currentColor" stroke-width="4" fill="none" stroke-linecap="round" opacity=".55"/><circle cx="32" cy="20" r="6" fill="#d4683a"/></svg>
+      </span>
+      <span class="brand-name">Roma<b>Flow</b></span>
+    </button>
+    <nav class="steps" aria-label="Passaggi">
+      <button data-step="prefs" data-testid="nav-prefs"><i>1</i><span>Preferenze</span></button>
+      <button data-step="plan" data-testid="nav-plan"><i>2</i><span>Itinerario</span></button>
+      <button data-step="impact" data-testid="nav-impact"><i>3</i><span>Impatto</span></button>
+    </nav>
+    <div class="topbar-right">
+      <span class="demo-badge" data-testid="badge-demo-data" title="">Dati dimostrativi</span>
+      <button class="btn-ghost small" data-testid="btn-reset" id="btn-reset" title="Ricomincia da capo">↺ <span>Ricomincia</span></button>
+    </div>
+  </header>
+
+  <main id="app" aria-live="polite">
+    <div class="boot">Caricamento…</div>
+  </main>
+
+  <div id="overlay" class="overlay" hidden>
+    <div class="overlay-card">
+      <div class="orbit"><span></span><span></span><span></span></div>
+      <h3 id="overlay-title">Analizzo i flussi…</h3>
+      <ul id="overlay-steps"></ul>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "note": "Arricchimento per la sola interfaccia, indicizzato per id del luogo: icona, descrizione breve, interessi, al coperto/all'aperto e minuti persi in coda al picco (peakDelayMinutes, STIMA dimostrativa). Se un luogo manca qui, l'adapter usa valori di default per categoria."
+  },
+  "places": {
+    "colosseo":             { "emoji": "🏟️", "indoor": false, "peakDelayMinutes": 70, "interests": ["storia-antica"], "description": "L'anfiteatro più grande del mondo romano: gladiatori, 50.000 spettatori e 2000 anni di storia." },
+    "foro_romano_palatino": { "emoji": "🏛️", "indoor": false, "peakDelayMinutes": 30, "interests": ["storia-antica", "panorami"], "description": "Il cuore politico dell'antica Roma: templi, basiliche, la Via Sacra e il colle dei palazzi imperiali." },
+    "pantheon":             { "emoji": "⛪", "indoor": true, "peakDelayMinutes": 40, "interests": ["storia-antica", "chiese", "arte"], "description": "La cupola in calcestruzzo non armato più grande del mondo, intatta da quasi 1900 anni." },
+    "fontana_di_trevi":     { "emoji": "⛲", "indoor": false, "peakDelayMinutes": 30, "interests": ["piazze", "arte"], "description": "Il capolavoro barocco di Nicola Salvi: una moneta e a Roma si torna." },
+    "musei_vaticani":       { "emoji": "🎨", "indoor": true, "peakDelayMinutes": 80, "interests": ["arte", "chiese"], "description": "Chilometri di capolavori fino alla Cappella Sistina di Michelangelo." },
+    "basilica_san_pietro":  { "emoji": "✝️", "indoor": true, "peakDelayMinutes": 60, "interests": ["chiese", "arte", "panorami"], "description": "La chiesa più grande della cristianità, con la Pietà e la cupola di Michelangelo." },
+    "piazza_navona":        { "emoji": "🗿", "indoor": false, "peakDelayMinutes": 12, "interests": ["piazze", "arte"], "description": "L'antico stadio di Domiziano diventato la piazza barocca della Fontana dei Quattro Fiumi." },
+    "piazza_di_spagna":     { "emoji": "🌸", "indoor": false, "peakDelayMinutes": 15, "interests": ["piazze", "panorami"], "description": "La scalinata di Trinità dei Monti e la Barcaccia del Bernini." },
+    "galleria_borghese":    { "emoji": "🖼️", "indoor": true, "peakDelayMinutes": 20, "interests": ["arte"], "description": "Bernini, Caravaggio e Canova in una villa nel parco. Ingresso a fasce orarie." },
+    "castel_santangelo":    { "emoji": "🏰", "indoor": true, "peakDelayMinutes": 35, "interests": ["storia-antica", "panorami"], "description": "Mausoleo di Adriano, fortezza dei papi e terrazza panoramica sul Tevere." },
+    "trastevere":           { "emoji": "🍝", "indoor": false, "peakDelayMinutes": 12, "interests": ["cibo", "autentica"], "description": "Vicoli, edera e trattorie: il quartiere più autentico per vivere la Roma di tutti i giorni." },
+    "campo_de_fiori":       { "emoji": "🍅", "indoor": false, "peakDelayMinutes": 10, "interests": ["cibo", "autentica", "piazze"], "description": "Il mercato rionale più famoso di Roma, sotto la statua di Giordano Bruno." },
+    "bocca_della_verita":   { "emoji": "🗣️", "indoor": false, "peakDelayMinutes": 45, "interests": ["storia-antica", "chiese"], "description": "Il mascherone di Santa Maria in Cosmedin: la fila per la foto è leggendaria." },
+    "terme_di_caracalla":   { "emoji": "♨️", "indoor": false, "peakDelayMinutes": 10, "interests": ["storia-antica"], "description": "Le terme imperiali più spettacolari di Roma, grandiose e sorprendentemente tranquille." },
+    "musei_capitolini":     { "emoji": "🐺", "indoor": true, "peakDelayMinutes": 15, "interests": ["arte", "storia-antica", "panorami"], "description": "Il museo pubblico più antico del mondo: la Lupa, il Marco Aurelio e la vista sul Foro." }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "meta": {
+    "schemaVersion": 1,
+    "dataStatus": "dimostrativi",
+    "note": "Eventi che modificano l'affollamento previsto. crowdDelta viene sommato al profilo orario (risultato limitato a 0-100)."
+  },
+  "events": [
+    {
+      "id": "udienza-papale",
+      "name": "Udienza generale del mercoledì",
+      "placeIds": ["basilica_san_pietro"],
+      "weekdays": ["wed"],
+      "from": "08:00",
+      "to": "13:00",
+      "crowdDelta": 30
+    },
+    {
+      "id": "prima-domenica",
+      "name": "Prima domenica del mese: ingresso gratuito",
+      "placeIds": ["colosseo", "foro_romano_palatino", "castel_santangelo", "galleria_borghese", "terme_di_caracalla", "pantheon"],
+      "monthDay": "first-sunday",
+      "from": "08:00",
+      "to": "19:00",
+      "crowdDelta": 25
+    },
+    {
+      "id": "mercato-mattina",
+      "name": "Mercato rionale",
+      "placeIds": ["campo_de_fiori"],
+      "weekdays": ["mon", "tue", "wed", "thu", "fri", "sat"],
+      "from": "08:00",
+      "to": "13:00",
+      "crowdDelta": 8
+    }
+  ]
+}
