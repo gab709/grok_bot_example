@@ -1,5 +1,5 @@
-# Roma Senza Code
-### Il tuo itinerario a Roma, costruito sui flussi reali di persone
+# RomaFlow
+### Roma al momento giusto. Il tuo itinerario a Roma, costruito sui flussi reali di persone
 
 > **One-liner:** un'app che conosce in anticipo quando il Colosseo, la Fontana di Trevi o i Musei Vaticani saranno affollati, e costruisce per te l'itinerario che ti fa vedere di più facendo meno fila.
 
@@ -21,7 +21,7 @@ Roma è una delle città più visitate al mondo, ma visitarla bene è difficile.
 
 ## 2. La soluzione
 
-**Roma Senza Code** è un pianificatore di viaggio intelligente che:
+**RomaFlow** è un pianificatore di viaggio intelligente che:
 
 1. **Conosce i flussi storici** di monumenti, musei, piazze e luoghi di interesse: per ogni luogo, quanto è affollato per giorno della settimana, fascia oraria, stagione e in presenza di eventi.
 2. **Chiede al turista poche cose:** date del viaggio, dove alloggia, cosa vuole assolutamente vedere, ritmo preferito (rilassato o intenso), interessi (arte, storia antica, cibo, quartieri autentici).
@@ -80,7 +80,7 @@ flowchart LR
 
 ## 6. Vantaggio competitivo
 
-| | Guide e blog | App di mappe | Tour operator | **Roma Senza Code** |
+| | Guide e blog | App di mappe | Tour operator | **RomaFlow** |
 |---|---|---|---|---|
 | Dice cosa vedere | Sì | In parte | Sì | Sì |
 | Ottimizza *quando* andare | No | No | In parte | **Sì** |
