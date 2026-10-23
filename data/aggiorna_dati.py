@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Aggiornamento notturno dei dati RomaFlow (solo libreria standard).
+"""Aggiornamento orario dei dati RomaFlow (solo libreria standard).
 
 Esegue, in ordine:
  1. rigenera luoghi_roma.json/.csv e affollamento_orario.csv con gli orari della stagione corrente

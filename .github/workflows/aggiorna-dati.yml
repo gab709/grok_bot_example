@@ -1,6 +1,6 @@
 # Aggiornamento automatico dei dati RomaFlow (meteo, orari stagionali, calendario eventi).
-# Orario: il cron di GitHub e' in UTC. "0 1 * * *" = 01:00 UTC
-#   -> 03:00 a Roma con l'ora legale (CEST, UTC+2), 02:00 a Roma con l'ora solare (CET, UTC+1).
+# Orario: ogni ora, al minuto 0 ("0 * * * *", il cron di GitHub e' in UTC).
+#   GitHub puo' ritardare le esecuzioni programmate di alcuni minuti nei momenti di carico.
 # NB: i trigger "schedule" partono solo quando questo file e' sul branch di default (main),
 #     e lavorano sul branch di default. Anche workflow_dispatch compare nell'interfaccia solo
 #     quando il file e' su main; poi si puo' scegliere il branch su cui eseguirlo.
@@ -8,7 +8,7 @@ name: Aggiorna dati RomaFlow
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "0 * * * *"
   workflow_dispatch:
 
 permissions:

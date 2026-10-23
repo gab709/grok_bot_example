@@ -12,7 +12,7 @@ Dataset di **15 luoghi iconici di Roma** per il prototipo RomaFlow: anagrafica, 
 | `luoghi_roma.csv` | Una riga per luogo (orari per giorno come `HH:MM-HH:MM` o `chiuso`) |
 | `affollamento_orario.csv` | Formato lungo: `place_id, day_type (feriale/festivo), hour, crowd_level, crowd_source` |
 | `genera_dataset.py` | Script che genera i tre file sopra (orari della stagione corrente). Modificare qui i dati dei luoghi |
-| `aggiorna_dati.py` | Aggiornamento completo (notturno): rigenera i file sopra, `meteo_roma.json` e `calendario.json` |
+| `aggiorna_dati.py` | Aggiornamento completo (ogni ora): rigenera i file sopra, `meteo_roma.json` e `calendario.json` |
 | `meteo_roma.json` | Previsione meteo oraria per Roma, prossimi 7 giorni (Open-Meteo), istantanea dell'ultimo aggiornamento |
 | `calendario.json` | Prossimi 60 giorni: festività, eventi, orari del giorno e affollamento corretto per ogni luogo |
 | `meteo.js` | Modulo ES per il browser: meteo in tempo reale da Open-Meteo e avvisi pioggia per i luoghi all'aperto |
@@ -108,9 +108,9 @@ const perLuogo = await getMeteoPerLuoghi(luoghi);   // facoltativo: una chiamata
 
 - Luoghi "all'aperto" = categoria `monumento all'aperto`, `piazza`, `quartiere`. Nota: il Pantheon è classificato come monumento ed è quindi trattato come luogo all'aperto (in realtà è coperto, a parte l'oculo); l'app può fare un'eccezione.
 - Soglia di probabilità di pioggia configurabile (`soglia`, default 60%). Si considerano solo le fasce 07-22 (`ore`, configurabile).
-- Se la chiamata live non funziona (offline), l'app può usare `meteo_roma.json` come riserva (istantanea notturna).
+- Se la chiamata live non funziona (offline), l'app può usare `meteo_roma.json` come riserva (istantanea dell'ultimo aggiornamento orario).
 
-### Aggiornamento notturno (`aggiorna_dati.py`)
+### Aggiornamento orario (`aggiorna_dati.py`)
 
 ```bash
 python3 data/aggiorna_dati.py                # tutto: dataset + meteo + calendario 60 giorni
@@ -132,6 +132,6 @@ Solo libreria standard Python (3.9+). A ogni esecuzione:
 
 ### GitHub Actions (`.github/workflows/aggiorna-dati.yml`)
 
-- Ogni giorno alle **01:00 UTC** (= 03:00 a Roma con l'ora legale, 02:00 con l'ora solare) e a mano con `workflow_dispatch`.
-- Esegue `python3 data/aggiorna_dati.py` e fa commit sullo stesso branch **solo se i file sono cambiati**, come `github-actions[bot]` (`permissions: contents: write`). Poiché meteo e `generated_at` cambiano ogni giorno, in pratica c'è un commit al giorno.
+- **Ogni ora** al minuto 0 (`0 * * * *`; GitHub puo' ritardare di qualche minuto) e a mano con `workflow_dispatch`.
+- Esegue `python3 data/aggiorna_dati.py` e fa commit sullo stesso branch **solo se i file sono cambiati**, come `github-actions[bot]` (`permissions: contents: write`). Poiché `generated_at` e il meteo cambiano a ogni esecuzione, in pratica c'è un commit ogni ora.
 - **Limite di GitHub:** i trigger `schedule` partono solo quando il workflow è sul **branch di default (main)** e girano su main; quindi l'aggiornamento automatico funziona solo dopo il merge di `data/` e del workflow su main.
