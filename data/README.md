@@ -1,0 +1,82 @@
+# Dataset luoghi di Roma (RomaFlow, Persona 1 - Dati)
+
+Dataset di **15 luoghi iconici di Roma** per il prototipo RomaFlow: anagrafica, coordinate, orari di apertura, prenotazione, durata tipica della visita, visitatori annui (dove esiste un dato pubblico) e **livello di folla orario 07:00-22:00** per un giorno feriale e uno festivo tipici.
+
+> **Attenzione:** i livelli di folla orari sono **stime dimostrative**, non misure reali. Nel dataset sono marcati con `crowd_source: "stima dimostrativa"`. Non vanno presentati come dati reali.
+
+## File
+
+| File | Contenuto |
+|---|---|
+| `luoghi_roma.json` | Formato principale per la web app: `{ meta, places[] }` |
+| `luoghi_roma.csv` | Una riga per luogo (orari per giorno come `HH:MM-HH:MM` o `chiuso`) |
+| `affollamento_orario.csv` | Formato lungo: `place_id, day_type (feriale/festivo), hour, crowd_level, crowd_source` |
+| `genera_dataset.py` | Script che genera i tre file (modificare qui e rilanciare `python3 genera_dataset.py`) |
+
+## Luoghi
+
+Colosseo, Foro Romano e Palatino, Pantheon, Fontana di Trevi, Musei Vaticani e Cappella Sistina, Basilica di San Pietro, Piazza Navona, Piazza di Spagna e Trinità dei Monti, Galleria Borghese, Castel Sant'Angelo, Trastevere, Campo de' Fiori, Bocca della Verità (Santa Maria in Cosmedin), Terme di Caracalla, Musei Capitolini.
+
+## Campi (JSON)
+
+| Campo | Significato | Reale o stimato |
+|---|---|---|
+| `id`, `name`, `category` | Identificativo, nome, categoria (`museo`, `monumento all'aperto`, `piazza`, `chiesa`, `quartiere`) | Classificazione nostra |
+| `lat`, `lon` | Coordinate WGS84 | Pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate punto per punto |
+| `opening_hours` | Per giorno `lun`..`dom`: `[apertura, chiusura]`, `null` = chiuso, `00:00-24:00` = spazio pubblico sempre accessibile | **Reale** dai siti ufficiali dove indicato in `sources.opening_hours_status` |
+| `opening_hours_note` | Ultimo ingresso, variazioni stagionali, giorni di chiusura, eccezioni | Reale (con eventuali avvisi "da verificare") |
+| `booking`, `booking_note` | Prenotazione obbligatoria / consigliata / non necessaria | Reale dove c'è fonte, altrimenti nostra valutazione |
+| `visit_duration_min` | Durata tipica della visita in minuti | **Stima** |
+| `annual_visitors`, `annual_visitors_year`, `annual_visitors_note` | Visitatori annui; `null` se non esiste un dato ufficiale | **Reale** (MiC 2024; Musei Vaticani 2024) |
+| `popularity` | Peso 0-1 usato per scalare il profilo orario | Derivato dai visitatori reali dove presenti, altrimenti **stima manuale** |
+| `crowd_hours` | Ore di inizio fascia: 7..22 (16 fasce) | - |
+| `crowd_weekday`, `crowd_weekend` | Livello di folla 0-100 per ogni fascia; 0 se il luogo è chiuso | **Stima dimostrativa** |
+| `sources` | Fonte per ogni tipo di valore (coordinate, orari, prenotazione, durata, visitatori, popolarità, folla) | - |
+| `crowd_source` | Sempre `"stima dimostrativa"` | - |
+
+## Che cosa è reale e che cosa è stimato
+
+**Reale (verificato su fonte pubblica, ottobre 2026):**
+- Orari di apertura di Colosseo, Foro Romano/Palatino, Pantheon, Musei Vaticani, Basilica di San Pietro, Castel Sant'Angelo, Terme di Caracalla, Musei Capitolini.
+- Visitatori annui 2024: Parco archeologico del Colosseo 14.733.395 (dato dell'intero Parco, include Foro e Palatino), Pantheon 4.086.947, Castel Sant'Angelo 1.315.063, Galleria Borghese 599.104, Terme di Caracalla 258.687 (fonte MiC); Musei Vaticani 6.825.436 (dato dei Musei Vaticani riportato da The Art Newspaper).
+
+**Parzialmente verificato:** orari Galleria Borghese (fonte del concessionario Gebart, da ricontrollare sul sito ufficiale), Bocca della Verità (fonti non concordi sulla pausa pranzo), regole di accesso alla Fontana di Trevi (accesso regolato al bordo vasca da verificare).
+
+**Non disponibile:** visitatori annui di Fontana di Trevi, San Pietro, piazze, Trastevere, Bocca della Verità e Musei Capitolini (museo civico, fuori dalle statistiche MiC: la stampa cita "circa un milione" nel 2025, ma non lo usiamo come dato ufficiale).
+
+**Stimato:** durata della visita, popolarità per i luoghi senza dati, **tutti i livelli di folla orari**.
+
+## Metodo delle stime di affollamento
+
+1. **Profilo orario tipico per categoria** (valori 0-1 per le fasce 07-22), scritto a mano da conoscenza generale dei flussi turistici: i musei e i monumenti hanno il picco a fine mattinata (10-12) e calano nel pomeriggio; le chiese hanno il picco al mattino; le piazze crescono verso il tramonto e la sera (picco 18-20); il quartiere (Trastevere) ha il picco serale (20-22). Il profilo festivo è un po' più pieno e più lungo.
+2. **Popolarità** del luogo (0-1): per i luoghi con visitatori reali, scala logaritmica tra 250.000 visitatori/anno (0,5) e 15 milioni (1,0); per gli altri, stima manuale.
+3. `folla = profilo_categoria[ora] x popolarità x (1,1 se festivo) x 100`, limitato a 100.
+4. **Fasce di chiusura = 0**, calcolate dagli orari reali (feriale = orari del mercoledì, festivo = orari del sabato).
+
+Non sono stati usati dati di Google Maps "orari di punta" (non è consentito estrarli in automatico). Per l'MVP le stime vanno sostituite con una fonte oraria reale (per esempio BestTime.app o dati di bigliettazione tramite partnership), come previsto nel pitch (sezione 11).
+
+## Avvertenze sugli orari (importanti per l'itinerario)
+
+- Gli orari nel JSON sono quelli della **stagione invernale** (da fine ottobre 2026); le variazioni sono in `opening_hours_note`.
+- **Musei Vaticani:** chiusi la domenica, **tranne l'ultima domenica del mese** (9-14, ultimo ingresso 12:30, gratuito, non prenotabile, code lunghissime). Ultimo ingresso nei giorni normali alle 18:00. Chiusi anche in varie festività (vedi nota).
+- **Colosseo / Foro:** il 25 ottobre 2026 la chiusura passa da 18:30 a 16:30 (ultimo ingresso 15:30). Prenotazione della fascia obbligatoria. Prima domenica del mese gratuita (senza prenotazione, molta folla).
+- **Basilica di San Pietro:** dal 26 ottobre 2026 7-19 (prima 7-20). Mercoledì mattina (udienza generale) e celebrazioni papali possono limitare l'accesso.
+- **Lunedì chiusi:** Galleria Borghese, Castel Sant'Angelo (salvo primo lunedì del mese, 14-20), Terme di Caracalla.
+- **Pantheon:** durante le Messe (sabato 17:00, domenica 10:30) ingresso solo per il culto.
+- **Prime domeniche del mese** (siti statali gratuiti) e **ultima domenica** (Vaticani gratuiti) generano picchi anomali non modellati in questa versione.
+
+## Fonti
+
+- MiC, Tavola 8 - Top 30 visitatori 2024: https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf
+- MiC, comunicato top 30 2024: https://cultura.gov.it/comunicato/27590
+- The Art Newspaper, musei più visitati 2024 (Musei Vaticani): https://www.theartnewspaper.com/2025/04/01/the-worlds-most-visited-museums-2024-
+- Musei Vaticani, orari e chiusure: https://www.museivaticani.va/content/museivaticani/it/info/orari-musei-vaticani.html
+- Musei Vaticani, tariffe: https://www.museivaticani.va/content/museivaticani/it/organizza-visita/tariffe-e-biglietti.html
+- Parco archeologico del Colosseo, orari e biglietti: https://colosseo.it/orari-e-biglietti/
+- Pantheon (Direzione Musei nazionali di Roma): https://direzionemuseiroma.cultura.gov.it/pantheon/
+- Castel Sant'Angelo: https://direzionemuseiroma.cultura.gov.it/museo-nazionale-di-castel-santangelo/
+- Galleria Borghese (Gebart): https://www.gebart.it/musei/galleria-borghese/ e sito ufficiale https://galleriaborghese.cultura.gov.it/
+- Terme di Caracalla (MiC): https://cultura.gov.it/luogo/terme-di-caracalla
+- Basilica di San Pietro, orari: https://www.basilicasanpietro.va/it/orari
+- Musei Capitolini, informazioni pratiche: https://www.museicapitolini.org/it/informazioni_pratiche/orari_e_indirizzi
+- Santa Maria in Cosmedin (Turismo Roma): https://www.turismoroma.it/it/luoghi/basilica-di-santa-maria-cosmedin
