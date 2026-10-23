@@ -173,22 +173,36 @@ def applica_stagione(oggi):
             p["hours"] = {d: (None if v is None else [st["open"], st["close"][s]]) for d, v in p["hours"].items()}
     return s
 
-def genera(oggi=None):
-    """Rigenera luoghi_roma.json/.csv e affollamento_orario.csv con gli orari della stagione di `oggi`."""
+FLICKR_PESO = 0.7  # nella fusione: 70% forma oraria Flickr, 30% curva di categoria
+
+def genera(oggi=None, trend=None, flickr=None):
+    """Rigenera luoghi_roma.json/.csv e affollamento_orario.csv con gli orari della stagione di `oggi`.
+    trend:  {id: fattore 0.85-1.25} dal trend Wikipedia (facoltativo, vedi wikipedia_interesse.py)
+    flickr: {id: {profilo_feriale[16], profilo_festivo[16], campione_sufficiente, foto_07_22}} (facoltativo)"""
     oggi = oggi or _dt.datetime.now(ROMA).date()
     stag = applica_stagione(oggi)
+    trend, flickr = trend or {}, flickr or {}
     places = []
     for p in P:
         pop, pop_src = popularity(p)
-        crowd = {}
+        f_trend = trend.get(p["id"], 1.0)
+        fl = flickr.get(p["id"])
+        usa_flickr = bool(fl and fl.get("campione_sufficiente"))
+        crowd, base = {}, {}
         for dt, ref_day in (("feriale", "mer"), ("festivo", "sab")):
             prof = PROF[p["category"]][dt]
+            if usa_flickr:  # forma oraria: 70% foto Flickr (0-1) + 30% curva di categoria
+                fprof = fl["profilo_" + dt]
+                prof = [FLICKR_PESO * fprof[i] / 100 + (1 - FLICKR_PESO) * prof[i] for i in range(len(HOURS))]
             boost = 1.1 if dt == "festivo" else 1.0
-            vals = []
+            vals, vals0 = [], []
             for i, h in enumerate(HOURS):
                 open_ = is_open(p["hours"][ref_day], h)
-                vals.append(int(round(min(100, prof[i] * pop * boost * 100))) if open_ else 0)
-            crowd[dt] = vals
+                v = prof[i] * pop * boost * 100
+                vals0.append(int(round(min(100, v))) if open_ else 0)
+                vals.append(int(round(min(100, v * f_trend))) if open_ else 0)
+            crowd[dt], base[dt] = vals, vals0
+        crowd_src = "profilo da foto Flickr + stima" if usa_flickr else "stima dimostrativa"
         places.append({
             "id": p["id"], "name": p["name"], "category": p["category"],
             "lat": p["lat"], "lon": p["lon"],
@@ -199,6 +213,15 @@ def genera(oggi=None):
             "popularity": pop,
             "crowd_hours": HOURS,
             "crowd_weekday": crowd["feriale"], "crowd_weekend": crowd["festivo"],
+            # campi aggiunti (retrocompatibili): curve prima della correzione e correzioni applicate
+            "crowd_weekday_base": base["feriale"], "crowd_weekend_base": base["festivo"],
+            "crowd_corrections": {
+                "wikipedia_trend": f_trend,
+                "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+                "flickr_blend": usa_flickr,
+                "flickr_photos_07_22": (fl or {}).get("foto_07_22"),
+                "flickr_weight": FLICKR_PESO if usa_flickr else 0,
+            },
             "sources": {
                 "coordinates": COORD_SRC,
                 "opening_hours": p["hours_source"], "opening_hours_status": p["hours_status"],
@@ -206,9 +229,11 @@ def genera(oggi=None):
                 "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
                 "annual_visitors": p["visitors_source"],
                 "popularity": pop_src,
-                "crowd": "stima dimostrativa",
+                "crowd": crowd_src + (" (corretta con trend Wikipedia)" if f_trend != 1.0 else ""),
+                "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json" if p["id"] in trend else "non disponibile",
+                "flickr_profile": "Flickr API, vedi flickr_profili.json" if usa_flickr else "non disponibile",
             },
-            "crowd_source": "stima dimostrativa",
+            "crowd_source": crowd_src,
         })
 
     meta = {
@@ -218,6 +243,9 @@ def genera(oggi=None):
         "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
         "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
         "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
+        "crowd_corrections_note": "crowd_weekday/weekend = curva base x crowd_corrections.wikipedia_trend (interesse online, non presenze). "
+                                  "Se crowd_corrections.flickr_blend e' true la forma oraria e' 70% foto Flickr + 30% curva di categoria. "
+                                  "Le curve senza correzione sono in crowd_weekday_base/crowd_weekend_base.",
         "opening_hours_season": f"Orari della stagione '{stag}' valida al {oggi.isoformat()} (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
         "generated_at": _dt.datetime.now(ROMA).isoformat(timespec="seconds"),
         "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile",

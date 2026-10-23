@@ -7,8 +7,9 @@
     "crowd_weekday_ref": "giorno feriale tipico (calcolato con gli orari del mercoledi')",
     "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
+    "crowd_corrections_note": "crowd_weekday/weekend = curva base x crowd_corrections.wikipedia_trend (interesse online, non presenze). Se crowd_corrections.flickr_blend e' true la forma oraria e' 70% foto Flickr + 30% curva di categoria. Le curve senza correzione sono in crowd_weekday_base/crowd_weekend_base.",
     "opening_hours_season": "Orari della stagione 'ottobre' valida al 2026-10-23 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
-    "generated_at": "2026-10-23T12:41:43+02:00",
+    "generated_at": "2026-10-23T12:51:37+02:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
@@ -110,6 +111,49 @@
         0,
         0
       ],
+      "crowd_weekday_base": [
+        0,
+        20,
+        50,
+        80,
+        100,
+        95,
+        80,
+        75,
+        80,
+        70,
+        55,
+        40,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend_base": [
+        0,
+        22,
+        60,
+        93,
+        100,
+        100,
+        99,
+        93,
+        93,
+        82,
+        66,
+        49,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_corrections": {
+        "wikipedia_trend": 1.0,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://colosseo.it/orari-e-biglietti/",
@@ -118,7 +162,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -188,6 +234,42 @@
         0,
         0,
         42,
+        67,
+        84,
+        80,
+        67,
+        63,
+        67,
+        59,
+        46,
+        34,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        51,
+        79,
+        92,
+        92,
+        83,
+        79,
+        79,
+        69,
+        55,
+        42,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
+        42,
         68,
         85,
         81,
@@ -202,7 +284,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         0,
         51,
@@ -220,6 +302,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.988,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://colosseo.it/orari-e-biglietti/",
@@ -228,7 +317,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -316,6 +407,42 @@
         0,
         0,
         51,
+        78,
+        92,
+        92,
+        83,
+        78,
+        78,
+        69,
+        55,
+        42,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
+        42,
+        67,
+        84,
+        80,
+        67,
+        63,
+        67,
+        59,
+        46,
+        34,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend_base": [
+        0,
+        0,
+        51,
         79,
         93,
         93,
@@ -330,6 +457,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.997,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://direzionemuseiroma.cultura.gov.it/pantheon/",
@@ -338,7 +472,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -405,6 +541,42 @@
         22
       ],
       "crowd_weekday": [
+        4,
+        9,
+        18,
+        36,
+        54,
+        63,
+        63,
+        58,
+        58,
+        63,
+        72,
+        81,
+        90,
+        85,
+        72,
+        54
+      ],
+      "crowd_weekend": [
+        5,
+        10,
+        20,
+        44,
+        64,
+        79,
+        79,
+        74,
+        74,
+        79,
+        89,
+        98,
+        98,
+        98,
+        89,
+        69
+      ],
+      "crowd_weekday_base": [
         5,
         10,
         20,
@@ -422,7 +594,7 @@
         80,
         60
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         6,
         11,
         22,
@@ -440,6 +612,13 @@
         99,
         77
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.895,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "non verificato",
@@ -448,7 +627,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -513,6 +694,42 @@
       ],
       "crowd_weekday": [
         0,
+        26,
+        47,
+        73,
+        86,
+        81,
+        68,
+        73,
+        68,
+        56,
+        38,
+        21,
+        9,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        28,
+        56,
+        85,
+        94,
+        94,
+        85,
+        85,
+        80,
+        66,
+        47,
+        28,
+        9,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
         27,
         50,
         77,
@@ -529,7 +746,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         30,
         60,
@@ -547,6 +764,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.946,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://www.museivaticani.va/content/museivaticani/it/info/orari-musei-vaticani.html",
@@ -555,7 +779,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://www.theartnewspaper.com/2025/04/01/the-worlds-most-visited-museums-2024-",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -623,6 +849,42 @@
       ],
       "crowd_weekday": [
         14,
+        32,
+        55,
+        78,
+        91,
+        78,
+        55,
+        59,
+        64,
+        59,
+        50,
+        37,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        20,
+        40,
+        70,
+        96,
+        100,
+        90,
+        70,
+        70,
+        75,
+        70,
+        60,
+        45,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        14,
         33,
         57,
         81,
@@ -639,7 +901,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         21,
         42,
         73,
@@ -657,6 +919,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.962,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://www.basilicasanpietro.va/it/orari",
@@ -665,7 +934,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -735,6 +1006,42 @@
         4,
         8,
         16,
+        33,
+        49,
+        57,
+        57,
+        53,
+        53,
+        57,
+        65,
+        73,
+        81,
+        77,
+        65,
+        49
+      ],
+      "crowd_weekend": [
+        4,
+        9,
+        18,
+        40,
+        58,
+        72,
+        72,
+        67,
+        67,
+        72,
+        80,
+        89,
+        89,
+        89,
+        80,
+        63
+      ],
+      "crowd_weekday_base": [
+        4,
+        8,
+        16,
         32,
         48,
         56,
@@ -749,7 +1056,7 @@
         64,
         48
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         4,
         9,
         18,
@@ -767,6 +1074,13 @@
         79,
         62
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 1.016,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "spazio pubblico",
@@ -775,7 +1089,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -844,6 +1160,42 @@
       "crowd_weekday": [
         4,
         8,
+        16,
+        31,
+        47,
+        55,
+        55,
+        51,
+        51,
+        55,
+        63,
+        71,
+        79,
+        75,
+        63,
+        47
+      ],
+      "crowd_weekend": [
+        4,
+        9,
+        17,
+        39,
+        56,
+        69,
+        69,
+        65,
+        65,
+        69,
+        78,
+        86,
+        86,
+        86,
+        78,
+        60
+      ],
+      "crowd_weekday_base": [
+        4,
+        8,
         17,
         34,
         51,
@@ -859,7 +1211,7 @@
         68,
         51
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         5,
         9,
         19,
@@ -877,6 +1229,13 @@
         84,
         65
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.924,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "spazio pubblico",
@@ -885,7 +1244,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -951,6 +1312,42 @@
       "crowd_weekday": [
         0,
         0,
+        32,
+        49,
+        58,
+        55,
+        46,
+        49,
+        46,
+        38,
+        26,
+        14,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        38,
+        57,
+        64,
+        64,
+        57,
+        57,
+        54,
+        45,
+        32,
+        19,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
         33,
         52,
         61,
@@ -966,7 +1363,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         0,
         40,
@@ -984,6 +1381,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.955,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://www.gebart.it/musei/galleria-borghese/",
@@ -992,7 +1396,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1060,6 +1466,42 @@
         0,
         39,
         60,
+        71,
+        67,
+        57,
+        60,
+        57,
+        46,
+        32,
+        18,
+        7,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        47,
+        70,
+        78,
+        78,
+        70,
+        70,
+        66,
+        54,
+        39,
+        23,
+        8,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
+        39,
+        60,
         70,
         67,
         56,
@@ -1073,7 +1515,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         0,
         46,
@@ -1091,6 +1533,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 1.006,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://direzionemuseiroma.cultura.gov.it/museo-nazionale-di-castel-santangelo/",
@@ -1099,7 +1548,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1167,6 +1618,42 @@
       ],
       "crowd_weekday": [
         4,
+        7,
+        11,
+        14,
+        21,
+        28,
+        36,
+        28,
+        25,
+        25,
+        28,
+        39,
+        53,
+        68,
+        71,
+        64
+      ],
+      "crowd_weekend": [
+        4,
+        8,
+        12,
+        20,
+        31,
+        43,
+        51,
+        43,
+        39,
+        39,
+        43,
+        55,
+        66,
+        78,
+        78,
+        78
+      ],
+      "crowd_weekday_base": [
+        4,
         8,
         11,
         15,
@@ -1183,7 +1670,7 @@
         75,
         68
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         4,
         8,
         12,
@@ -1201,6 +1688,13 @@
         82,
         82
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.948,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "spazio pubblico",
@@ -1209,7 +1703,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1278,6 +1774,42 @@
       "crowd_weekday": [
         3,
         6,
+        11,
+        23,
+        34,
+        40,
+        40,
+        37,
+        37,
+        40,
+        46,
+        51,
+        57,
+        54,
+        46,
+        34
+      ],
+      "crowd_weekend": [
+        3,
+        6,
+        13,
+        28,
+        41,
+        50,
+        50,
+        47,
+        47,
+        50,
+        57,
+        63,
+        63,
+        63,
+        57,
+        44
+      ],
+      "crowd_weekday_base": [
+        3,
+        6,
         12,
         24,
         36,
@@ -1293,7 +1825,7 @@
         48,
         36
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         3,
         7,
         13,
@@ -1311,6 +1843,13 @@
         59,
         46
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.952,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "spazio pubblico",
@@ -1319,7 +1858,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1394,7 +1935,7 @@
         47,
         33,
         36,
-        38,
+        39,
         36,
         30,
         0,
@@ -1404,6 +1945,42 @@
         0
       ],
       "crowd_weekend": [
+        0,
+        0,
+        42,
+        58,
+        61,
+        55,
+        42,
+        42,
+        46,
+        42,
+        36,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
+        33,
+        47,
+        55,
+        47,
+        33,
+        36,
+        38,
+        36,
+        30,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend_base": [
         0,
         0,
         42,
@@ -1421,6 +1998,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 1.003,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://www.turismoroma.it/it/luoghi/basilica-di-santa-maria-cosmedin",
@@ -1429,7 +2013,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1496,6 +2082,42 @@
         0,
         0,
         25,
+        39,
+        49,
+        47,
+        39,
+        37,
+        39,
+        34,
+        27,
+        20,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        30,
+        46,
+        54,
+        54,
+        49,
+        46,
+        46,
+        40,
+        32,
+        24,
+        0,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
+        25,
         40,
         50,
         48,
@@ -1510,7 +2132,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         0,
         30,
@@ -1528,6 +2150,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.973,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://cultura.gov.it/luogo/terme-di-caracalla",
@@ -1536,7 +2165,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     },
@@ -1605,6 +2236,42 @@
       "crowd_weekday": [
         0,
         0,
+        29,
+        45,
+        53,
+        50,
+        42,
+        45,
+        42,
+        34,
+        24,
+        13,
+        5,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekend": [
+        0,
+        0,
+        35,
+        52,
+        58,
+        58,
+        52,
+        52,
+        49,
+        41,
+        29,
+        17,
+        6,
+        0,
+        0,
+        0
+      ],
+      "crowd_weekday_base": [
+        0,
+        0,
         30,
         47,
         55,
@@ -1620,7 +2287,7 @@
         0,
         0
       ],
-      "crowd_weekend": [
+      "crowd_weekend_base": [
         0,
         0,
         36,
@@ -1638,6 +2305,13 @@
         0,
         0
       ],
+      "crowd_corrections": {
+        "wikipedia_trend": 0.96,
+        "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
+        "flickr_blend": false,
+        "flickr_photos_07_22": null,
+        "flickr_weight": 0
+      },
       "sources": {
         "coordinates": "coordinate pubbliche (Wikipedia/OpenStreetMap), precisione ~50 m, non verificate puntualmente in questa sessione",
         "opening_hours": "https://www.museicapitolini.org/it/informazioni_pratiche/orari_e_indirizzi",
@@ -1646,7 +2320,9 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "non disponibile (stampa: https://www.ilmessaggero.it/roma/centro_storico/roma_incassi_arte_colosseo_fontana_trevi_pantheon-9487124.html)",
         "popularity": "stima manuale (nessun dato visitatori ufficiale)",
-        "crowd": "stima dimostrativa"
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
+        "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
+        "flickr_profile": "non disponibile"
       },
       "crowd_source": "stima dimostrativa"
     }

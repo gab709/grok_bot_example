@@ -18,6 +18,8 @@ from zoneinfo import ZoneInfo
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import genera_dataset as G
+import wikipedia_interesse as W
+import flickr_profili as F
 
 OUT = G.OUT
 ROMA = ZoneInfo("Europe/Rome")
@@ -120,7 +122,8 @@ def costruisci_calendario(places, giorni, meteo, soglia):
             crowd = []
             for i, h in enumerate(G.HOURS):
                 aperto = G.is_open(orario, h)
-                v = profilo[i] if profilo[i] > 0 else (G.PROF[p["category"]][day_type][i] * p["popularity"] * 100)
+                f_trend = p.get("crowd_corrections", {}).get("wikipedia_trend", 1.0)
+                v = profilo[i] if profilo[i] > 0 else (G.PROF[p["category"]][day_type][i] * p["popularity"] * 100 * f_trend)
                 if pid == "basilica_san_pietro" and g.weekday() == 2 and 8 <= h <= 12:
                     v *= 1.3  # udienza: piazza piena, accesso alla basilica limitato
                 crowd.append(int(round(min(100, v * fattore))) if aperto else 0)
@@ -130,6 +133,8 @@ def costruisci_calendario(places, giorni, meteo, soglia):
             if p["category"] in CATEGORIE_APERTO and g.isoformat() in pioggia:
                 sconsigliato = [h for h in G.HOURS if (pioggia[g.isoformat()].get(h) or 0) >= soglia]
             luoghi[pid] = {"open": orario, "crowd": crowd, "fattore": fattore, "note": note,
+                           "fattore_wikipedia": p.get("crowd_corrections", {}).get("wikipedia_trend", 1.0),
+                           "crowd_source": p.get("crowd_source", "stima dimostrativa"),
                            "ore_sconsigliate_pioggia": sconsigliato}
         out.append({"date": g.isoformat(), "weekday": wd, "day_type": day_type, "eventi": eventi, "luoghi": luoghi})
     return out
@@ -140,7 +145,22 @@ def main():
     ap.add_argument("--soglia-pioggia", type=int, default=60)
     ap.add_argument("--senza-meteo", action="store_true")
     a = ap.parse_args()
-    places, stag = G.genera()
+    # Segnali reali (facoltativi): un errore qui non deve mai bloccare l'aggiornamento.
+    trend, flickr = {}, {}
+    try:
+        trend = W.fattori_trend(W.aggiorna(log=print))
+    except Exception as e:
+        print("ATTENZIONE: Wikipedia non disponibile:", e, file=sys.stderr)
+        try:  # ripiego sulla cache, anche se vecchia
+            trend = W.fattori_trend(json.load(open(W.FILE, encoding="utf-8")))
+        except Exception:
+            pass
+    try:
+        doc_f = F.aggiorna([{"id": p["id"], "lat": p["lat"], "lon": p["lon"], "category": p["category"]} for p in G.P], log=print)
+        flickr = (doc_f or {}).get("luoghi", {})
+    except Exception as e:
+        print("ATTENZIONE: Flickr non disponibile:", e, file=sys.stderr)
+    places, stag = G.genera(trend=trend, flickr=flickr)
     meteo = None
     if not a.senza_meteo:
         try:
@@ -152,8 +172,8 @@ def main():
     cal = costruisci_calendario(places, a.giorni, meteo, a.soglia_pioggia)
     doc = {"meta": {"generated_at": dt.datetime.now(ROMA).isoformat(timespec="seconds"), "giorni": a.giorni,
                     "stagione_orari": stag, "soglia_pioggia_percento": a.soglia_pioggia,
-                    "crowd_hours": G.HOURS, "crowd_source": "stima dimostrativa",
-                    "note": "crowd = profilo stimato del luogo x fattore evento (gratuita' 1.5-1.6, festivita' all'aperto 1.15, udienza 1.3 sulla mattina a San Pietro); 0 = chiuso. "
+                    "crowd_hours": G.HOURS, "crowd_source": "stima dimostrativa (per luogo vedi luoghi.*.crowd_source)",
+                    "note": "crowd = profilo stimato del luogo x fattore evento (gratuita' 1.5-1.6, festivita' all'aperto 1.15, udienza 1.3 sulla mattina a San Pietro); il profilo del luogo include gia' fattore_wikipedia (trend interesse online 0.85-1.25); 0 = chiuso. "
                             "ore_sconsigliate_pioggia solo per i prossimi 7 giorni (previsione Open-Meteo) e per i luoghi all'aperto. "
                             "Orari di eventi e festivita' calcolati con regole fisse: verificare sui siti ufficiali."},
            "giorni": cal}

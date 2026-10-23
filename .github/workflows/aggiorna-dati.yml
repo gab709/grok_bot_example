@@ -31,6 +31,10 @@ jobs:
           python-version: "3.12"
 
       - name: Rigenera i dati (solo libreria standard, nessuna dipendenza)
+        # FLICKR_API_KEY: secret facoltativo (Settings > Secrets and variables > Actions).
+        # Se vuoto, i profili Flickr vengono saltati e resta la stima. Wikipedia non richiede chiavi.
+        env:
+          FLICKR_API_KEY: ${{ secrets.FLICKR_API_KEY }}
         run: python3 data/aggiorna_dati.py
 
       - name: Commit solo se qualcosa e' cambiato

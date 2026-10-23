@@ -16,6 +16,9 @@ Dataset di **15 luoghi iconici di Roma** per il prototipo RomaFlow: anagrafica, 
 | `meteo_roma.json` | Previsione meteo oraria per Roma, prossimi 7 giorni (Open-Meteo), istantanea dell'ultimo aggiornamento |
 | `calendario.json` | Prossimi 60 giorni: festività, eventi, orari del giorno e affollamento corretto per ogni luogo |
 | `meteo.js` | Modulo ES per il browser: meteo in tempo reale da Open-Meteo e avvisi pioggia per i luoghi all'aperto |
+| `wikipedia_interesse.py` / `wikipedia_interesse.json` | Interesse online per luogo dalle visualizzazioni Wikipedia (it+en, ultimi 365 giorni): indici 7/30 giorni, profilo per giorno della settimana, fattore di tendenza |
+| `flickr_profili.py` / `flickr_profili.json` | Profili orari dalle foto pubbliche Flickr (solo con `FLICKR_API_KEY`; il JSON esiste solo dopo il primo scaricamento) |
+| `test_flickr.py` | Test del percorso Flickr con risposte finte (`python3 data/test_flickr.py`) |
 | `test_meteo.mjs` | Test di `meteo.js` con Node 18+ (`node data/test_meteo.mjs`) |
 
 ## Luoghi
@@ -135,3 +138,35 @@ Solo libreria standard Python (3.9+). A ogni esecuzione:
 - **Ogni ora** al minuto 0 (`0 * * * *`; GitHub puo' ritardare di qualche minuto) e a mano con `workflow_dispatch`.
 - Esegue `python3 data/aggiorna_dati.py` e fa commit sullo stesso branch **solo se i file sono cambiati**, come `github-actions[bot]` (`permissions: contents: write`). Poiché `generated_at` e il meteo cambiano a ogni esecuzione, in pratica c'è un commit ogni ora.
 - **Limite di GitHub:** i trigger `schedule` partono solo quando il workflow è sul **branch di default (main)** e girano su main; quindi l'aggiornamento automatico funziona solo dopo il merge di `data/` e del workflow su main.
+
+## Segnali reali per calibrare l'affollamento
+
+L'obiettivo è sostituire gradualmente le curve inventate con segnali reali e gratuiti. Le curve restano **stime**: i segnali correggono la stima, non sono conteggi di persone.
+
+### 1. Interesse online da Wikipedia (attivo)
+
+- **Fonte:** [Wikimedia REST API, Pageviews per articolo](https://wikimedia.org/api/rest_v1/#/Pageviews%20data) (gratuita, senza chiave, dati CC0), visite di utenti umani alle pagine it.wikipedia + en.wikipedia di ogni luogo, ultimi 365 giorni. Le richieste usano uno User-Agent descrittivo, come chiede Wikimedia. I titoli degli articoli sono in `TITOLI` dentro `wikipedia_interesse.py` (verificati: nessuno manca e nessuno è un redirect).
+- **Cosa misura:** l'**interesse online**, NON le persone presenti sul posto.
+- **Calcolo** (`wikipedia_interesse.json`, per luogo): `indice_7_giorni` e `indice_30_giorni` = media degli ultimi 7/30 giorni / media dell'anno; `profilo_giorno_settimana` (1 = medio); `fattore_trend = 1 + 0,5 x (0,7 x indice_30 + 0,3 x indice_7 - 1)`, limitato a **[0,85; 1,25]**.
+- **Applicazione:** `crowd_weekday`/`crowd_weekend` in `luoghi_roma.json` = curva base x `fattore_trend`. Per trasparenza: `crowd_weekday_base`/`crowd_weekend_base` (curva senza correzione) e `crowd_corrections.wikipedia_trend`. In `calendario.json` ogni luogo ha `fattore_wikipedia`.
+- **Cache:** si riscarica solo se `meta.fetched_at` ha più di 20 ore (la data di modifica del file non è affidabile in GitHub Actions). Se l'API non risponde si usa la cache, anche se vecchia; se manca anche quella il fattore vale 1,0. L'aggiornamento non si blocca mai.
+- Il profilo per giorno della settimana viene salvato ma non è ancora applicato alle curve (l'interesse online tende a salire nei giorni feriali, cioè quando si pianifica, non quando si visita).
+
+### 2. Profili orari da foto Flickr (pronto, serve una chiave)
+
+- **Fonte:** [Flickr API `flickr.photos.search`](https://www.flickr.com/services/api/flickr.photos.search.html): foto pubbliche geolocalizzate entro ~0,25 km dal luogo (0,2 km piazze, 0,5 km Trastevere), scattate negli ultimi 3 anni, `extras=date_taken`, massimo 16 pagine da 250 per luogo, circa 1 richiesta al secondo.
+- **Cosa misura:** le foto pubbliche come **indicatore della presenza di persone** per ora del giorno (07-22), separando feriale (lun-ven) e weekend. L'ora è quella della fotocamera.
+- **Fusione:** se un luogo ha **almeno 200 foto** nella fascia 07-22, la forma oraria diventa `70% profilo Flickr + 30% curva di categoria`, scalata per popolarità (e per il trend Wikipedia). In quel caso `crowd_source = "profilo da foto Flickr + stima"` e `crowd_corrections.flickr_blend = true`; altrimenti resta `"stima dimostrativa"`.
+- **Attivazione:** creare una chiave su https://www.flickr.com/services/apps/create/ e aggiungerla come secret **`FLICKR_API_KEY`** del repository (Settings > Secrets and variables > Actions). Senza chiave lo script scrive una riga di log e prosegue. Cache: riscarica al massimo una volta a settimana.
+
+### Nuovi campi (aggiunti, nessun campo esistente modificato)
+
+| File | Campo | Significato |
+|---|---|---|
+| `luoghi_roma.json` | `crowd_weekday_base`, `crowd_weekend_base` | Curva prima delle correzioni |
+| `luoghi_roma.json` | `crowd_corrections` | `wikipedia_trend`, `flickr_blend`, `flickr_photos_07_22`, `flickr_weight` |
+| `luoghi_roma.json` | `sources.wikipedia_trend`, `sources.flickr_profile` | Fonti dei segnali |
+| `luoghi_roma.json` | `meta.crowd_corrections_note` | Spiegazione delle correzioni |
+| `calendario.json` | `luoghi.*.fattore_wikipedia`, `luoghi.*.crowd_source` | Correzione applicata e origine della curva |
+
+> Nota per l'app: `app/` legge la propria copia statica `app/data/luoghi_roma.json`, che **non** viene aggiornata dal workflow. Per usare i dati aggiornati basta impostare in `app/data/config.json` `dataSources.places` a `"../../data/luoghi_roma.json"` (il formato è compatibile, testato con l'adapter dell'app).
