@@ -9,7 +9,7 @@
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
     "crowd_corrections_note": "crowd_weekday/weekend = curva base x crowd_corrections.wikipedia_trend (interesse online, non presenze). Se crowd_corrections.flickr_blend e' true la forma oraria e' 70% foto Flickr + 30% curva di categoria. Le curve senza correzione sono in crowd_weekday_base/crowd_weekend_base.",
     "opening_hours_season": "Orari della stagione 'ottobre' valida al 2026-10-24 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
-    "generated_at": "2026-10-24T06:18:54+02:00",
+    "generated_at": "2026-10-24T11:24:05+02:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
@@ -79,12 +79,12 @@
         0,
         20,
         50,
-        80,
-        100,
-        95,
-        80,
-        75,
-        80,
+        79,
+        99,
+        94,
+        79,
+        74,
+        79,
         70,
         55,
         40,
@@ -100,7 +100,7 @@
         93,
         100,
         100,
-        99,
+        98,
         93,
         93,
         82,
@@ -148,7 +148,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 1.0,
+        "wikipedia_trend": 0.995,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -162,7 +162,7 @@
         "visit_duration": "stima (durata tipica di visita, non da fonte ufficiale)",
         "annual_visitors": "https://statistica.cultura.gov.it/wp-content/uploads/2025/05/MUSEI_TAVOLA8_2024-1.pdf",
         "popularity": "calcolata da visitatori annui reali (scala logaritmica)",
-        "crowd": "stima dimostrativa",
+        "crowd": "stima dimostrativa (corretta con trend Wikipedia)",
         "wikipedia_trend": "Wikimedia Pageviews API (https://wikimedia.org/api/rest_v1/), vedi wikipedia_interesse.json",
         "flickr_profile": "non disponibile"
       },
@@ -252,12 +252,12 @@
         0,
         0,
         51,
-        79,
+        78,
         92,
         92,
         83,
-        79,
-        79,
+        78,
+        78,
         69,
         55,
         42,
@@ -303,7 +303,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.988,
+        "wikipedia_trend": 0.987,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -391,13 +391,13 @@
         42,
         67,
         84,
-        80,
+        79,
         67,
         63,
         67,
         59,
         46,
-        34,
+        33,
         0,
         0,
         0,
@@ -415,7 +415,7 @@
         78,
         69,
         55,
-        42,
+        41,
         0,
         0,
         0,
@@ -458,7 +458,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.997,
+        "wikipedia_trend": 0.994,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -551,11 +551,11 @@
         58,
         58,
         63,
-        72,
-        81,
-        90,
+        71,
+        80,
+        89,
         85,
-        72,
+        71,
         54
       ],
       "crowd_weekend": [
@@ -569,11 +569,11 @@
         74,
         74,
         79,
-        89,
+        88,
         98,
         98,
         98,
-        89,
+        88,
         69
       ],
       "crowd_weekday_base": [
@@ -613,7 +613,7 @@
         77
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.895,
+        "wikipedia_trend": 0.893,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -703,7 +703,7 @@
         73,
         68,
         56,
-        38,
+        39,
         21,
         9,
         0,
@@ -713,7 +713,7 @@
       "crowd_weekend": [
         0,
         28,
-        56,
+        57,
         85,
         94,
         94,
@@ -765,7 +765,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.946,
+        "wikipedia_trend": 0.947,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -869,7 +869,7 @@
         20,
         40,
         70,
-        96,
+        95,
         100,
         90,
         70,
@@ -920,7 +920,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.962,
+        "wikipedia_trend": 0.961,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1031,11 +1031,11 @@
         67,
         67,
         72,
-        80,
+        81,
         89,
         89,
         89,
-        80,
+        81,
         63
       ],
       "crowd_weekday_base": [
@@ -1075,7 +1075,7 @@
         62
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 1.016,
+        "wikipedia_trend": 1.017,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1191,7 +1191,7 @@
         86,
         86,
         78,
-        60
+        61
       ],
       "crowd_weekday_base": [
         4,
@@ -1230,7 +1230,7 @@
         65
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.924,
+        "wikipedia_trend": 0.925,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1332,12 +1332,12 @@
         0,
         38,
         57,
-        64,
-        64,
+        63,
+        63,
         57,
         57,
         54,
-        45,
+        44,
         32,
         19,
         0,
@@ -1382,7 +1382,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.955,
+        "wikipedia_trend": 0.951,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1468,9 +1468,9 @@
         60,
         71,
         67,
-        57,
+        56,
         60,
-        57,
+        56,
         46,
         32,
         18,
@@ -1534,7 +1534,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 1.006,
+        "wikipedia_trend": 1.004,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1630,7 +1630,7 @@
         28,
         39,
         53,
-        68,
+        67,
         71,
         64
       ],
@@ -1689,7 +1689,7 @@
         82
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.948,
+        "wikipedia_trend": 0.947,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1800,11 +1800,11 @@
         47,
         47,
         50,
-        57,
+        56,
         63,
         63,
         63,
-        57,
+        56,
         44
       ],
       "crowd_weekday_base": [
@@ -1844,7 +1844,7 @@
         46
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.952,
+        "wikipedia_trend": 0.949,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -1930,12 +1930,12 @@
         0,
         0,
         33,
-        47,
+        46,
         55,
-        47,
+        46,
         33,
         36,
-        39,
+        38,
         36,
         30,
         0,
@@ -1948,12 +1948,12 @@
         0,
         0,
         42,
-        58,
-        61,
-        55,
+        57,
+        60,
+        54,
         42,
         42,
-        46,
+        45,
         42,
         36,
         0,
@@ -1999,7 +1999,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 1.003,
+        "wikipedia_trend": 0.994,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -2081,7 +2081,7 @@
       "crowd_weekday": [
         0,
         0,
-        25,
+        24,
         39,
         49,
         47,
@@ -2103,7 +2103,7 @@
         46,
         54,
         54,
-        49,
+        48,
         46,
         46,
         40,
@@ -2151,7 +2151,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.973,
+        "wikipedia_trend": 0.972,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
@@ -2261,7 +2261,7 @@
         52,
         52,
         49,
-        41,
+        40,
         29,
         17,
         6,
@@ -2306,7 +2306,7 @@
         0
       ],
       "crowd_corrections": {
-        "wikipedia_trend": 0.96,
+        "wikipedia_trend": 0.956,
         "wikipedia_trend_note": "fattore 0.85-1.25 dall'interesse online (pagine Wikipedia it+en), moltiplica la curva base; 1.0 = dato assente",
         "flickr_blend": false,
         "flickr_photos_07_22": null,
