@@ -9,8 +9,8 @@ colosseo,feriale,13:00,79,stima dimostrativa
 colosseo,feriale,14:00,74,stima dimostrativa
 colosseo,feriale,15:00,79,stima dimostrativa
 colosseo,feriale,16:00,70,stima dimostrativa
-colosseo,feriale,17:00,55,stima dimostrativa
-colosseo,feriale,18:00,40,stima dimostrativa
+colosseo,feriale,17:00,0,stima dimostrativa
+colosseo,feriale,18:00,0,stima dimostrativa
 colosseo,feriale,19:00,0,stima dimostrativa
 colosseo,feriale,20:00,0,stima dimostrativa
 colosseo,feriale,21:00,0,stima dimostrativa
@@ -25,8 +25,8 @@ colosseo,festivo,13:00,98,stima dimostrativa
 colosseo,festivo,14:00,93,stima dimostrativa
 colosseo,festivo,15:00,93,stima dimostrativa
 colosseo,festivo,16:00,82,stima dimostrativa
-colosseo,festivo,17:00,66,stima dimostrativa
-colosseo,festivo,18:00,49,stima dimostrativa
+colosseo,festivo,17:00,0,stima dimostrativa
+colosseo,festivo,18:00,0,stima dimostrativa
 colosseo,festivo,19:00,0,stima dimostrativa
 colosseo,festivo,20:00,0,stima dimostrativa
 colosseo,festivo,21:00,0,stima dimostrativa
@@ -41,8 +41,8 @@ foro_romano_palatino,feriale,13:00,67,stima dimostrativa
 foro_romano_palatino,feriale,14:00,63,stima dimostrativa
 foro_romano_palatino,feriale,15:00,67,stima dimostrativa
 foro_romano_palatino,feriale,16:00,59,stima dimostrativa
-foro_romano_palatino,feriale,17:00,46,stima dimostrativa
-foro_romano_palatino,feriale,18:00,34,stima dimostrativa
+foro_romano_palatino,feriale,17:00,0,stima dimostrativa
+foro_romano_palatino,feriale,18:00,0,stima dimostrativa
 foro_romano_palatino,feriale,19:00,0,stima dimostrativa
 foro_romano_palatino,feriale,20:00,0,stima dimostrativa
 foro_romano_palatino,feriale,21:00,0,stima dimostrativa
@@ -57,8 +57,8 @@ foro_romano_palatino,festivo,13:00,83,stima dimostrativa
 foro_romano_palatino,festivo,14:00,78,stima dimostrativa
 foro_romano_palatino,festivo,15:00,78,stima dimostrativa
 foro_romano_palatino,festivo,16:00,69,stima dimostrativa
-foro_romano_palatino,festivo,17:00,55,stima dimostrativa
-foro_romano_palatino,festivo,18:00,42,stima dimostrativa
+foro_romano_palatino,festivo,17:00,0,stima dimostrativa
+foro_romano_palatino,festivo,18:00,0,stima dimostrativa
 foro_romano_palatino,festivo,19:00,0,stima dimostrativa
 foro_romano_palatino,festivo,20:00,0,stima dimostrativa
 foro_romano_palatino,festivo,21:00,0,stima dimostrativa
@@ -426,7 +426,7 @@ terme_di_caracalla,feriale,14:00,37,stima dimostrativa
 terme_di_caracalla,feriale,15:00,39,stima dimostrativa
 terme_di_caracalla,feriale,16:00,34,stima dimostrativa
 terme_di_caracalla,feriale,17:00,27,stima dimostrativa
-terme_di_caracalla,feriale,18:00,20,stima dimostrativa
+terme_di_caracalla,feriale,18:00,0,stima dimostrativa
 terme_di_caracalla,feriale,19:00,0,stima dimostrativa
 terme_di_caracalla,feriale,20:00,0,stima dimostrativa
 terme_di_caracalla,feriale,21:00,0,stima dimostrativa
@@ -442,7 +442,7 @@ terme_di_caracalla,festivo,14:00,46,stima dimostrativa
 terme_di_caracalla,festivo,15:00,46,stima dimostrativa
 terme_di_caracalla,festivo,16:00,40,stima dimostrativa
 terme_di_caracalla,festivo,17:00,32,stima dimostrativa
-terme_di_caracalla,festivo,18:00,24,stima dimostrativa
+terme_di_caracalla,festivo,18:00,0,stima dimostrativa
 terme_di_caracalla,festivo,19:00,0,stima dimostrativa
 terme_di_caracalla,festivo,20:00,0,stima dimostrativa
 terme_di_caracalla,festivo,21:00,0,stima dimostrativa

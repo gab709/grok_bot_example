@@ -8,8 +8,8 @@
     "crowd_weekend_ref": "giorno festivo tipico (calcolato con gli orari del sabato; la domenica alcuni luoghi sono chiusi: controllare opening_hours)",
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
     "crowd_corrections_note": "crowd_weekday/weekend = curva base x crowd_corrections.wikipedia_trend (interesse online, non presenze). Se crowd_corrections.flickr_blend e' true la forma oraria e' 70% foto Flickr + 30% curva di categoria. Le curve senza correzione sono in crowd_weekday_base/crowd_weekend_base.",
-    "opening_hours_season": "Orari della stagione 'ottobre' valida al 2026-10-24 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
-    "generated_at": "2026-10-24T22:35:33+02:00",
+    "opening_hours_season": "Orari della stagione 'inverno' valida al 2026-10-25 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
+    "generated_at": "2026-10-25T01:03:40+02:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
@@ -22,31 +22,31 @@
       "opening_hours": {
         "lun": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "mar": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "mer": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "gio": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "ven": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "sab": [
           "08:30",
-          "18:30"
+          "16:30"
         ],
         "dom": [
           "08:30",
-          "18:30"
+          "16:30"
         ]
       },
       "opening_hours_note": "Orario invernale dal 25/10/2026 al 28/02/2027 (ultimo ingresso 15:30). Dal 1 al 24/10/2026 8:30-18:30; 29/03-30/09/2026 8:30-19:15. Chiuso 25/12 e 1/1. Gratis la prima domenica del mese (senza prenotazione, folla molto alta).",
@@ -86,8 +86,8 @@
         74,
         79,
         70,
-        55,
-        40,
+        0,
+        0,
         0,
         0,
         0,
@@ -104,8 +104,8 @@
         93,
         93,
         82,
-        66,
-        49,
+        0,
+        0,
         0,
         0,
         0,
@@ -122,8 +122,8 @@
         75,
         80,
         70,
-        55,
-        40,
+        0,
+        0,
         0,
         0,
         0,
@@ -140,8 +140,8 @@
         93,
         93,
         82,
-        66,
-        49,
+        0,
+        0,
         0,
         0,
         0,
@@ -177,31 +177,31 @@
       "opening_hours": {
         "lun": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "mar": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "mer": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "gio": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "ven": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "sab": [
           "09:00",
-          "18:30"
+          "16:30"
         ],
         "dom": [
           "09:00",
-          "18:30"
+          "16:30"
         ]
       },
       "opening_hours_note": "Apre alle 9:00; chiusura del Parco 16:30 dal 25/10/2026 (18:30 fino al 24/10). Chiuso 25/12 e 1/1.",
@@ -241,8 +241,8 @@
         63,
         67,
         59,
-        46,
-        34,
+        0,
+        0,
         0,
         0,
         0,
@@ -259,8 +259,8 @@
         78,
         78,
         69,
-        55,
-        42,
+        0,
+        0,
         0,
         0,
         0,
@@ -277,8 +277,8 @@
         64,
         68,
         60,
-        47,
-        34,
+        0,
+        0,
         0,
         0,
         0,
@@ -295,8 +295,8 @@
         79,
         79,
         70,
-        56,
-        42,
+        0,
+        0,
         0,
         0,
         0,
@@ -794,31 +794,31 @@
       "opening_hours": {
         "lun": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "mar": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "mer": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "gio": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "ven": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "sab": [
           "07:00",
-          "20:00"
+          "19:00"
         ],
         "dom": [
           "07:00",
-          "20:00"
+          "19:00"
         ]
       },
       "opening_hours_note": "Dal 26/10/2026 al 28/03/2027 7-19; fino al 25/10/2026 7-20. Il mercoledì mattina (udienza generale in piazza, ore 10) e durante celebrazioni papali l'accesso puo' essere limitato o sospeso: da verificare caso per caso.",
@@ -2029,27 +2029,27 @@
         "lun": null,
         "mar": [
           "09:00",
-          "18:30"
+          "17:30"
         ],
         "mer": [
           "09:00",
-          "18:30"
+          "17:30"
         ],
         "gio": [
           "09:00",
-          "18:30"
+          "17:30"
         ],
         "ven": [
           "09:00",
-          "18:30"
+          "17:30"
         ],
         "sab": [
           "09:00",
-          "18:30"
+          "17:30"
         ],
         "dom": [
           "09:00",
-          "18:30"
+          "17:30"
         ]
       },
       "opening_hours_note": "Lunedi' chiuso. Dal 25/10/2026 9-17:30; fino al 24/10/2026 9-18:30.",
@@ -2090,7 +2090,7 @@
         39,
         34,
         27,
-        20,
+        0,
         0,
         0,
         0,
@@ -2108,7 +2108,7 @@
         46,
         40,
         32,
-        24,
+        0,
         0,
         0,
         0,
@@ -2126,7 +2126,7 @@
         40,
         35,
         28,
-        20,
+        0,
         0,
         0,
         0,
@@ -2144,7 +2144,7 @@
         47,
         42,
         33,
-        25,
+        0,
         0,
         0,
         0,
