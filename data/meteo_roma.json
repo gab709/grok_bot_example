@@ -1,179 +1,11 @@
 {
  "fonte": "Open-Meteo (https://open-meteo.com), previsione, licenza CC BY 4.0",
  "url": "https://api.open-meteo.com/v1/forecast?latitude=41.8933&longitude=12.4829&timezone=Europe%2FRome&forecast_days=7&hourly=temperature_2m%2Cprecipitation_probability%2Cprecipitation%2Cweather_code",
- "scaricato_il": "2026-10-25T22:37:32+01:00",
+ "scaricato_il": "2026-10-26T01:03:25+01:00",
  "latitude": 41.923637,
  "longitude": 12.477454,
  "timezone": "Europe/Rome",
  "hourly": [
-  {
-   "time": "2026-10-25T00:00",
-   "temperature_c": 12.8,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T01:00",
-   "temperature_c": 12.6,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T02:00",
-   "temperature_c": 12.1,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T03:00",
-   "temperature_c": 11.6,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 1
-  },
-  {
-   "time": "2026-10-25T04:00",
-   "temperature_c": 11.0,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T05:00",
-   "temperature_c": 10.6,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 0
-  },
-  {
-   "time": "2026-10-25T06:00",
-   "temperature_c": 10.0,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 1
-  },
-  {
-   "time": "2026-10-25T07:00",
-   "temperature_c": 9.0,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 0
-  },
-  {
-   "time": "2026-10-25T08:00",
-   "temperature_c": 9.5,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 2
-  },
-  {
-   "time": "2026-10-25T09:00",
-   "temperature_c": 11.7,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T10:00",
-   "temperature_c": 13.4,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T11:00",
-   "temperature_c": 15.5,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T12:00",
-   "temperature_c": 17.0,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T13:00",
-   "temperature_c": 18.5,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T14:00",
-   "temperature_c": 18.8,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T15:00",
-   "temperature_c": 18.7,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T16:00",
-   "temperature_c": 18.5,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T17:00",
-   "temperature_c": 17.8,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 0
-  },
-  {
-   "time": "2026-10-25T18:00",
-   "temperature_c": 16.7,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 0
-  },
-  {
-   "time": "2026-10-25T19:00",
-   "temperature_c": 15.2,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T20:00",
-   "temperature_c": 14.6,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 0
-  },
-  {
-   "time": "2026-10-25T21:00",
-   "temperature_c": 13.9,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T22:00",
-   "temperature_c": 13.1,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
-  {
-   "time": "2026-10-25T23:00",
-   "temperature_c": 12.7,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 3
-  },
   {
    "time": "2026-10-26T00:00",
    "temperature_c": 12.6,
@@ -183,7 +15,7 @@
   },
   {
    "time": "2026-10-26T01:00",
-   "temperature_c": 12.4,
+   "temperature_c": 12.3,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
@@ -204,31 +36,31 @@
   },
   {
    "time": "2026-10-26T04:00",
-   "temperature_c": 12.9,
+   "temperature_c": 13.1,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 2
   },
   {
    "time": "2026-10-26T05:00",
-   "temperature_c": 12.8,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 2
-  },
-  {
-   "time": "2026-10-26T06:00",
    "temperature_c": 12.7,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 2
   },
   {
-   "time": "2026-10-26T07:00",
-   "temperature_c": 12.5,
+   "time": "2026-10-26T06:00",
+   "temperature_c": 12.6,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
-   "weather_code": 0
+   "weather_code": 2
+  },
+  {
+   "time": "2026-10-26T07:00",
+   "temperature_c": 12.4,
+   "precipitation_probability": 0,
+   "precipitation_mm": 0.0,
+   "weather_code": 1
   },
   {
    "time": "2026-10-26T08:00",
@@ -239,56 +71,56 @@
   },
   {
    "time": "2026-10-26T09:00",
-   "temperature_c": 14.5,
+   "temperature_c": 14.6,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 0
   },
   {
    "time": "2026-10-26T10:00",
-   "temperature_c": 16.8,
+   "temperature_c": 16.9,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
-   "weather_code": 1
+   "weather_code": 0
   },
   {
    "time": "2026-10-26T11:00",
-   "temperature_c": 19.0,
+   "temperature_c": 19.2,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 1
   },
   {
    "time": "2026-10-26T12:00",
-   "temperature_c": 20.6,
+   "temperature_c": 20.8,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 0
   },
   {
    "time": "2026-10-26T13:00",
-   "temperature_c": 21.7,
+   "temperature_c": 21.8,
+   "precipitation_probability": 0,
+   "precipitation_mm": 0.0,
+   "weather_code": 0
+  },
+  {
+   "time": "2026-10-26T14:00",
+   "temperature_c": 22.4,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
-   "time": "2026-10-26T14:00",
-   "temperature_c": 22.3,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 2
-  },
-  {
    "time": "2026-10-26T15:00",
-   "temperature_c": 22.5,
+   "temperature_c": 22.4,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-26T16:00",
-   "temperature_c": 22.2,
+   "temperature_c": 22.1,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
@@ -302,80 +134,80 @@
   },
   {
    "time": "2026-10-26T18:00",
-   "temperature_c": 20.2,
+   "temperature_c": 20.3,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
-   "weather_code": 3
+   "weather_code": 2
   },
   {
    "time": "2026-10-26T19:00",
-   "temperature_c": 19.5,
+   "temperature_c": 19.0,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
-   "weather_code": 3
+   "weather_code": 2
   },
   {
    "time": "2026-10-26T20:00",
    "temperature_c": 17.9,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
-   "weather_code": 1
+   "weather_code": 3
   },
   {
    "time": "2026-10-26T21:00",
-   "temperature_c": 16.9,
+   "temperature_c": 17.0,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-26T22:00",
-   "temperature_c": 15.1,
+   "temperature_c": 15.4,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-26T23:00",
-   "temperature_c": 14.0,
+   "temperature_c": 14.2,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-27T00:00",
-   "temperature_c": 13.2,
+   "temperature_c": 13.5,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-27T01:00",
-   "temperature_c": 12.6,
+   "temperature_c": 13.0,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 2
   },
   {
    "time": "2026-10-27T02:00",
-   "temperature_c": 12.1,
-   "precipitation_probability": 0,
-   "precipitation_mm": 0.0,
-   "weather_code": 2
-  },
-  {
-   "time": "2026-10-27T03:00",
-   "temperature_c": 11.6,
+   "temperature_c": 12.4,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 1
   },
   {
-   "time": "2026-10-27T04:00",
-   "temperature_c": 11.1,
+   "time": "2026-10-27T03:00",
+   "temperature_c": 11.8,
    "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 2
+  },
+  {
+   "time": "2026-10-27T04:00",
+   "temperature_c": 11.4,
+   "precipitation_probability": 0,
+   "precipitation_mm": 0.0,
+   "weather_code": 1
   },
   {
    "time": "2026-10-27T05:00",
@@ -653,77 +485,77 @@
   {
    "time": "2026-10-28T20:00",
    "temperature_c": 15.5,
-   "precipitation_probability": 1,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-28T21:00",
    "temperature_c": 13.8,
-   "precipitation_probability": 2,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-28T22:00",
    "temperature_c": 12.7,
-   "precipitation_probability": 3,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-28T23:00",
    "temperature_c": 11.8,
-   "precipitation_probability": 4,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T00:00",
    "temperature_c": 11.3,
-   "precipitation_probability": 5,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T01:00",
    "temperature_c": 10.8,
-   "precipitation_probability": 5,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T02:00",
    "temperature_c": 10.5,
-   "precipitation_probability": 5,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T03:00",
    "temperature_c": 10.3,
-   "precipitation_probability": 4,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T04:00",
    "temperature_c": 10.2,
-   "precipitation_probability": 3,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T05:00",
    "temperature_c": 10.1,
-   "precipitation_probability": 2,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
   {
    "time": "2026-10-29T06:00",
    "temperature_c": 10.0,
-   "precipitation_probability": 1,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 3
   },
@@ -961,14 +793,14 @@
   {
    "time": "2026-10-30T16:00",
    "temperature_c": 20.5,
-   "precipitation_probability": 1,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 1
   },
   {
    "time": "2026-10-30T17:00",
    "temperature_c": 19.2,
-   "precipitation_probability": 1,
+   "precipitation_probability": 0,
    "precipitation_mm": 0.0,
    "weather_code": 2
   },
@@ -1179,6 +1011,174 @@
    "time": "2026-10-31T23:00",
    "temperature_c": 10.1,
    "precipitation_probability": 3,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T00:00",
+   "temperature_c": 10.1,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T01:00",
+   "temperature_c": 10.3,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T02:00",
+   "temperature_c": 10.6,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T03:00",
+   "temperature_c": 11.0,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T04:00",
+   "temperature_c": 11.4,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T05:00",
+   "temperature_c": 11.4,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.5,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T06:00",
+   "temperature_c": 11.3,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.5,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T07:00",
+   "temperature_c": 11.3,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.5,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T08:00",
+   "temperature_c": 11.4,
+   "precipitation_probability": 5,
+   "precipitation_mm": 0.7,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T09:00",
+   "temperature_c": 11.6,
+   "precipitation_probability": 5,
+   "precipitation_mm": 0.7,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T10:00",
+   "temperature_c": 11.8,
+   "precipitation_probability": 5,
+   "precipitation_mm": 0.7,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T11:00",
+   "temperature_c": 12.1,
+   "precipitation_probability": 5,
+   "precipitation_mm": 1.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T12:00",
+   "temperature_c": 12.3,
+   "precipitation_probability": 5,
+   "precipitation_mm": 1.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T13:00",
+   "temperature_c": 12.7,
+   "precipitation_probability": 5,
+   "precipitation_mm": 1.1,
+   "weather_code": 61
+  },
+  {
+   "time": "2026-11-01T14:00",
+   "temperature_c": 13.2,
+   "precipitation_probability": 5,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T15:00",
+   "temperature_c": 13.8,
+   "precipitation_probability": 5,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T16:00",
+   "temperature_c": 14.2,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T17:00",
+   "temperature_c": 14.3,
+   "precipitation_probability": 4,
+   "precipitation_mm": 0.1,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T18:00",
+   "temperature_c": 14.1,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.1,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T19:00",
+   "temperature_c": 13.7,
+   "precipitation_probability": 3,
+   "precipitation_mm": 0.1,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T20:00",
+   "temperature_c": 13.2,
+   "precipitation_probability": 2,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T21:00",
+   "temperature_c": 12.6,
+   "precipitation_probability": 2,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T22:00",
+   "temperature_c": 12.1,
+   "precipitation_probability": 1,
+   "precipitation_mm": 0.0,
+   "weather_code": 3
+  },
+  {
+   "time": "2026-11-01T23:00",
+   "temperature_c": 11.6,
+   "precipitation_probability": 1,
    "precipitation_mm": 0.0,
    "weather_code": 3
   }
