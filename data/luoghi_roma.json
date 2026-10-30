@@ -9,7 +9,7 @@
     "crowd_disclaimer": "I livelli di affollamento orari sono STIME DIMOSTRATIVE, non misure reali. Vedi data/README.md.",
     "crowd_corrections_note": "crowd_weekday/weekend = curva base x crowd_corrections.wikipedia_trend (interesse online, non presenze). Se crowd_corrections.flickr_blend e' true la forma oraria e' 70% foto Flickr + 30% curva di categoria. Le curve senza correzione sono in crowd_weekday_base/crowd_weekend_base.",
     "opening_hours_season": "Orari della stagione 'inverno' valida al 2026-10-30 (cambio automatico per data, vedi aggiorna_dati.py). Dettagli in opening_hours_note.",
-    "generated_at": "2026-10-30T01:45:59+01:00",
+    "generated_at": "2026-10-30T07:57:51+01:00",
     "opening_hours_format": "per giorno (lun..dom): [apertura, chiusura] in HH:MM, null = chiuso; 00:00-24:00 = spazio pubblico sempre accessibile"
   },
   "places": [
