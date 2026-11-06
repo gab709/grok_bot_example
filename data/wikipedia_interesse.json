@@ -2,9 +2,9 @@
  "meta": {
   "fonte": "Wikimedia REST API - Pageviews per articolo (utenti umani, tutti gli accessi), it.wikipedia + en.wikipedia",
   "url_api": "https://wikimedia.org/api/rest_v1/#/Pageviews%20data",
-  "esempio_url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/it.wikipedia/all-access/user/Colosseo/daily/20251105/20261104",
+  "esempio_url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/it.wikipedia/all-access/user/Colosseo/daily/20251106/20261105",
   "licenza": "dati Wikimedia, CC0",
-  "fetched_at": "2026-11-05T16:20:19+01:00",
+  "fetched_at": "2026-11-06T18:52:51+01:00",
   "nota": "Misura l'INTERESSE ONLINE (visite alle pagine Wikipedia), NON le persone presenti sul posto. Usato solo come fattore di tendenza limitato (0.85-1.25) sulla stima di affollamento.",
   "metodo": "indice_N = media ultimi N giorni / media dell'anno; trend_grezzo = 0.7*indice_30 + 0.3*indice_7; fattore_trend = 1 + 0.5*(trend_grezzo - 1), limitato a [0.85, 1.25]. profilo_giorno_settimana = media per giorno / media dell'anno (1 = medio).",
   "errori": []
@@ -12,495 +12,495 @@
  "luoghi": {
   "colosseo": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 3913.7,
-   "media_ultimi_7": 3169.4,
-   "media_ultimi_30": 3708.6,
-   "indice_7_giorni": 0.81,
-   "indice_30_giorni": 0.948,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 3910.1,
+   "media_ultimi_7": 3196.1,
+   "media_ultimi_30": 3698.7,
+   "indice_7_giorni": 0.817,
+   "indice_30_giorni": 0.946,
    "profilo_giorno_settimana": {
-    "lun": 1.044,
+    "lun": 1.045,
     "mar": 1.001,
-    "mer": 1.045,
-    "gio": 1.015,
+    "mer": 1.043,
+    "gio": 1.013,
     "ven": 0.965,
-    "sab": 0.906,
-    "dom": 1.023
+    "sab": 0.907,
+    "dom": 1.024
    },
-   "trend_grezzo": 0.906,
-   "fattore_trend": 0.953,
+   "trend_grezzo": 0.907,
+   "fattore_trend": 0.954,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Colosseo",
-     "totale_periodo": 229487,
+     "totale_periodo": 229186,
      "url": "https://it.wikipedia.org/wiki/Colosseo"
     },
     "en.wikipedia": {
      "titolo": "Colosseum",
-     "totale_periodo": 1199016,
+     "totale_periodo": 1198004,
      "url": "https://en.wikipedia.org/wiki/Colosseum"
     }
    }
   },
   "foro_romano_palatino": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 707.6,
-   "media_ultimi_7": 585,
-   "media_ultimi_30": 661.6,
-   "indice_7_giorni": 0.827,
-   "indice_30_giorni": 0.935,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 706.5,
+   "media_ultimi_7": 580.1,
+   "media_ultimi_30": 655.0,
+   "indice_7_giorni": 0.821,
+   "indice_30_giorni": 0.927,
    "profilo_giorno_settimana": {
-    "lun": 1.064,
-    "mar": 1.023,
-    "mer": 1.006,
-    "gio": 0.987,
-    "ven": 0.953,
-    "sab": 0.94,
-    "dom": 1.027
-   },
-   "trend_grezzo": 0.902,
-   "fattore_trend": 0.951,
-   "articoli": {
-    "it.wikipedia": {
-     "titolo": "Foro_Romano",
-     "totale_periodo": 43728,
-     "url": "https://it.wikipedia.org/wiki/Foro_Romano"
-    },
-    "en.wikipedia": {
-     "titolo": "Roman_Forum",
-     "totale_periodo": 214553,
-     "url": "https://en.wikipedia.org/wiki/Roman_Forum"
-    }
-   }
-  },
-  "pantheon": {
-   "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 3136.1,
-   "media_ultimi_7": 2620.9,
-   "media_ultimi_30": 2944.1,
-   "indice_7_giorni": 0.836,
-   "indice_30_giorni": 0.939,
-   "profilo_giorno_settimana": {
-    "lun": 1.005,
-    "mar": 0.982,
-    "mer": 0.951,
-    "gio": 1.088,
-    "ven": 0.993,
-    "sab": 0.961,
-    "dom": 1.02
-   },
-   "trend_grezzo": 0.908,
-   "fattore_trend": 0.954,
-   "articoli": {
-    "it.wikipedia": {
-     "titolo": "Pantheon_(Roma)",
-     "totale_periodo": 211819,
-     "url": "https://it.wikipedia.org/wiki/Pantheon_%28Roma%29"
-    },
-    "en.wikipedia": {
-     "titolo": "Pantheon,_Rome",
-     "totale_periodo": 932857,
-     "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
-    }
-   }
-  },
-  "fontana_di_trevi": {
-   "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 1737.6,
-   "media_ultimi_7": 1085.7,
-   "media_ultimi_30": 1261.6,
-   "indice_7_giorni": 0.625,
-   "indice_30_giorni": 0.726,
-   "profilo_giorno_settimana": {
-    "lun": 0.952,
-    "mar": 1.307,
-    "mer": 0.925,
-    "gio": 0.998,
-    "ven": 0.898,
-    "sab": 0.935,
-    "dom": 0.987
-   },
-   "trend_grezzo": 0.696,
-   "fattore_trend": 0.85,
-   "articoli": {
-    "it.wikipedia": {
-     "titolo": "Fontana_di_Trevi",
-     "totale_periodo": 151239,
-     "url": "https://it.wikipedia.org/wiki/Fontana_di_Trevi"
-    },
-    "en.wikipedia": {
-     "titolo": "Trevi_Fountain",
-     "totale_periodo": 482985,
-     "url": "https://en.wikipedia.org/wiki/Trevi_Fountain"
-    }
-   }
-  },
-  "musei_vaticani": {
-   "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 387.7,
-   "media_ultimi_7": 306.1,
-   "media_ultimi_30": 341.8,
-   "indice_7_giorni": 0.79,
-   "indice_30_giorni": 0.882,
-   "profilo_giorno_settimana": {
-    "lun": 1.064,
-    "mar": 1.029,
-    "mer": 1.006,
-    "gio": 1.003,
-    "ven": 0.972,
-    "sab": 0.952,
-    "dom": 0.974
-   },
-   "trend_grezzo": 0.854,
-   "fattore_trend": 0.927,
-   "articoli": {
-    "it.wikipedia": {
-     "titolo": "Musei_Vaticani",
-     "totale_periodo": 33454,
-     "url": "https://it.wikipedia.org/wiki/Musei_Vaticani"
-    },
-    "en.wikipedia": {
-     "titolo": "Vatican_Museums",
-     "totale_periodo": 108059,
-     "url": "https://en.wikipedia.org/wiki/Vatican_Museums"
-    }
-   }
-  },
-  "basilica_san_pietro": {
-   "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 2239.3,
-   "media_ultimi_7": 1879.3,
-   "media_ultimi_30": 2057.7,
-   "indice_7_giorni": 0.839,
-   "indice_30_giorni": 0.919,
-   "profilo_giorno_settimana": {
-    "lun": 1.035,
-    "mar": 1.014,
-    "mer": 0.972,
-    "gio": 1.017,
-    "ven": 0.961,
-    "sab": 0.974,
+    "lun": 1.065,
+    "mar": 1.025,
+    "mer": 1.001,
+    "gio": 0.985,
+    "ven": 0.954,
+    "sab": 0.941,
     "dom": 1.028
    },
    "trend_grezzo": 0.895,
    "fattore_trend": 0.948,
    "articoli": {
     "it.wikipedia": {
+     "titolo": "Foro_Romano",
+     "totale_periodo": 43607,
+     "url": "https://it.wikipedia.org/wiki/Foro_Romano"
+    },
+    "en.wikipedia": {
+     "titolo": "Roman_Forum",
+     "totale_periodo": 214281,
+     "url": "https://en.wikipedia.org/wiki/Roman_Forum"
+    }
+   }
+  },
+  "pantheon": {
+   "giorni": 365,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 3134.2,
+   "media_ultimi_7": 2568.1,
+   "media_ultimi_30": 2910.5,
+   "indice_7_giorni": 0.819,
+   "indice_30_giorni": 0.929,
+   "profilo_giorno_settimana": {
+    "lun": 1.006,
+    "mar": 0.983,
+    "mer": 0.951,
+    "gio": 1.083,
+    "ven": 0.994,
+    "sab": 0.961,
+    "dom": 1.021
+   },
+   "trend_grezzo": 0.896,
+   "fattore_trend": 0.948,
+   "articoli": {
+    "it.wikipedia": {
+     "titolo": "Pantheon_(Roma)",
+     "totale_periodo": 211571,
+     "url": "https://it.wikipedia.org/wiki/Pantheon_%28Roma%29"
+    },
+    "en.wikipedia": {
+     "titolo": "Pantheon,_Rome",
+     "totale_periodo": 932415,
+     "url": "https://en.wikipedia.org/wiki/Pantheon%2C_Rome"
+    }
+   }
+  },
+  "fontana_di_trevi": {
+   "giorni": 365,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 1736.9,
+   "media_ultimi_7": 1088.6,
+   "media_ultimi_30": 1253.5,
+   "indice_7_giorni": 0.627,
+   "indice_30_giorni": 0.722,
+   "profilo_giorno_settimana": {
+    "lun": 0.952,
+    "mar": 1.307,
+    "mer": 0.928,
+    "gio": 0.992,
+    "ven": 0.898,
+    "sab": 0.935,
+    "dom": 0.988
+   },
+   "trend_grezzo": 0.693,
+   "fattore_trend": 0.85,
+   "articoli": {
+    "it.wikipedia": {
+     "titolo": "Fontana_di_Trevi",
+     "totale_periodo": 151185,
+     "url": "https://it.wikipedia.org/wiki/Fontana_di_Trevi"
+    },
+    "en.wikipedia": {
+     "titolo": "Trevi_Fountain",
+     "totale_periodo": 482797,
+     "url": "https://en.wikipedia.org/wiki/Trevi_Fountain"
+    }
+   }
+  },
+  "musei_vaticani": {
+   "giorni": 365,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 387.3,
+   "media_ultimi_7": 299.9,
+   "media_ultimi_30": 340.4,
+   "indice_7_giorni": 0.774,
+   "indice_30_giorni": 0.879,
+   "profilo_giorno_settimana": {
+    "lun": 1.065,
+    "mar": 1.03,
+    "mer": 1.004,
+    "gio": 1.001,
+    "ven": 0.973,
+    "sab": 0.953,
+    "dom": 0.976
+   },
+   "trend_grezzo": 0.848,
+   "fattore_trend": 0.924,
+   "articoli": {
+    "it.wikipedia": {
+     "titolo": "Musei_Vaticani",
+     "totale_periodo": 33397,
+     "url": "https://it.wikipedia.org/wiki/Musei_Vaticani"
+    },
+    "en.wikipedia": {
+     "titolo": "Vatican_Museums",
+     "totale_periodo": 107966,
+     "url": "https://en.wikipedia.org/wiki/Vatican_Museums"
+    }
+   }
+  },
+  "basilica_san_pietro": {
+   "giorni": 365,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 2236.7,
+   "media_ultimi_7": 1865.4,
+   "media_ultimi_30": 2048.7,
+   "indice_7_giorni": 0.834,
+   "indice_30_giorni": 0.916,
+   "profilo_giorno_settimana": {
+    "lun": 1.037,
+    "mar": 1.015,
+    "mer": 0.969,
+    "gio": 1.014,
+    "ven": 0.962,
+    "sab": 0.975,
+    "dom": 1.029
+   },
+   "trend_grezzo": 0.891,
+   "fattore_trend": 0.946,
+   "articoli": {
+    "it.wikipedia": {
      "titolo": "Basilica_di_San_Pietro_in_Vaticano",
-     "totale_periodo": 141868,
+     "totale_periodo": 141637,
      "url": "https://it.wikipedia.org/wiki/Basilica_di_San_Pietro_in_Vaticano"
     },
     "en.wikipedia": {
      "titolo": "St._Peter's_Basilica",
-     "totale_periodo": 675471,
+     "totale_periodo": 674755,
      "url": "https://en.wikipedia.org/wiki/St._Peter%27s_Basilica"
     }
    }
   },
   "piazza_navona": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 482.1,
-   "media_ultimi_7": 374.9,
-   "media_ultimi_30": 460.1,
-   "indice_7_giorni": 0.778,
-   "indice_30_giorni": 0.954,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 481.7,
+   "media_ultimi_7": 370.7,
+   "media_ultimi_30": 454.7,
+   "indice_7_giorni": 0.77,
+   "indice_30_giorni": 0.944,
    "profilo_giorno_settimana": {
     "lun": 1.007,
-    "mar": 0.929,
-    "mer": 0.892,
-    "gio": 0.919,
-    "ven": 0.989,
-    "sab": 1.132,
-    "dom": 1.135
+    "mar": 0.93,
+    "mer": 0.89,
+    "gio": 0.915,
+    "ven": 0.99,
+    "sab": 1.133,
+    "dom": 1.136
    },
-   "trend_grezzo": 0.901,
-   "fattore_trend": 0.951,
+   "trend_grezzo": 0.892,
+   "fattore_trend": 0.946,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Piazza_Navona",
-     "totale_periodo": 81017,
+     "totale_periodo": 80905,
      "url": "https://it.wikipedia.org/wiki/Piazza_Navona"
     },
     "en.wikipedia": {
      "titolo": "Piazza_Navona",
-     "totale_periodo": 94959,
+     "totale_periodo": 94908,
      "url": "https://en.wikipedia.org/wiki/Piazza_Navona"
     }
    }
   },
   "piazza_di_spagna": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 173.1,
-   "media_ultimi_7": 130.9,
-   "media_ultimi_30": 146.9,
-   "indice_7_giorni": 0.756,
-   "indice_30_giorni": 0.848,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 173.0,
+   "media_ultimi_7": 130.6,
+   "media_ultimi_30": 145.5,
+   "indice_7_giorni": 0.755,
+   "indice_30_giorni": 0.841,
    "profilo_giorno_settimana": {
-    "lun": 1.063,
+    "lun": 1.064,
     "mar": 0.962,
-    "mer": 0.906,
-    "gio": 0.945,
-    "ven": 0.986,
-    "sab": 1.053,
-    "dom": 1.087
+    "mer": 0.905,
+    "gio": 0.941,
+    "ven": 0.987,
+    "sab": 1.054,
+    "dom": 1.088
    },
-   "trend_grezzo": 0.821,
-   "fattore_trend": 0.91,
+   "trend_grezzo": 0.815,
+   "fattore_trend": 0.908,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Piazza_di_Spagna",
-     "totale_periodo": 37164,
+     "totale_periodo": 37129,
      "url": "https://it.wikipedia.org/wiki/Piazza_di_Spagna"
     },
     "en.wikipedia": {
      "titolo": "Piazza_di_Spagna",
-     "totale_periodo": 26017,
+     "totale_periodo": 26012,
      "url": "https://en.wikipedia.org/wiki/Piazza_di_Spagna"
     }
    }
   },
   "galleria_borghese": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 326.0,
-   "media_ultimi_7": 302.7,
-   "media_ultimi_30": 287.2,
-   "indice_7_giorni": 0.929,
-   "indice_30_giorni": 0.881,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 325.8,
+   "media_ultimi_7": 296.7,
+   "media_ultimi_30": 285.9,
+   "indice_7_giorni": 0.911,
+   "indice_30_giorni": 0.878,
    "profilo_giorno_settimana": {
-    "lun": 0.924,
-    "mar": 0.987,
+    "lun": 0.925,
+    "mar": 0.988,
     "mer": 1.05,
-    "gio": 0.983,
-    "ven": 0.959,
-    "sab": 1.014,
+    "gio": 0.98,
+    "ven": 0.96,
+    "sab": 1.015,
     "dom": 1.082
    },
-   "trend_grezzo": 0.895,
-   "fattore_trend": 0.948,
+   "trend_grezzo": 0.888,
+   "fattore_trend": 0.944,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Galleria_Borghese",
-     "totale_periodo": 34826,
+     "totale_periodo": 34789,
      "url": "https://it.wikipedia.org/wiki/Galleria_Borghese"
     },
     "en.wikipedia": {
      "titolo": "Galleria_Borghese",
-     "totale_periodo": 84155,
+     "totale_periodo": 84111,
      "url": "https://en.wikipedia.org/wiki/Galleria_Borghese"
     }
    }
   },
   "castel_santangelo": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 1000.2,
-   "media_ultimi_7": 887.9,
-   "media_ultimi_30": 979.3,
-   "indice_7_giorni": 0.888,
-   "indice_30_giorni": 0.979,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 999.3,
+   "media_ultimi_7": 860.7,
+   "media_ultimi_30": 969.9,
+   "indice_7_giorni": 0.861,
+   "indice_30_giorni": 0.971,
    "profilo_giorno_settimana": {
-    "lun": 0.976,
-    "mar": 0.959,
-    "mer": 0.926,
-    "gio": 0.951,
-    "ven": 0.984,
-    "sab": 1.082,
-    "dom": 1.124
+    "lun": 0.977,
+    "mar": 0.96,
+    "mer": 0.925,
+    "gio": 0.947,
+    "ven": 0.985,
+    "sab": 1.083,
+    "dom": 1.125
    },
-   "trend_grezzo": 0.952,
-   "fattore_trend": 0.976,
+   "trend_grezzo": 0.938,
+   "fattore_trend": 0.969,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Castel_Sant'Angelo",
-     "totale_periodo": 115417,
+     "totale_periodo": 115192,
      "url": "https://it.wikipedia.org/wiki/Castel_Sant%27Angelo"
     },
     "en.wikipedia": {
      "titolo": "Castel_Sant'Angelo",
-     "totale_periodo": 249668,
+     "totale_periodo": 249568,
      "url": "https://en.wikipedia.org/wiki/Castel_Sant%27Angelo"
     }
    }
   },
   "trastevere": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 214.7,
-   "media_ultimi_7": 159.7,
-   "media_ultimi_30": 180,
-   "indice_7_giorni": 0.744,
-   "indice_30_giorni": 0.838,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 214.2,
+   "media_ultimi_7": 163.1,
+   "media_ultimi_30": 179.7,
+   "indice_7_giorni": 0.762,
+   "indice_30_giorni": 0.839,
    "profilo_giorno_settimana": {
-    "lun": 1.017,
-    "mar": 0.983,
-    "mer": 0.949,
-    "gio": 0.959,
-    "ven": 0.97,
-    "sab": 1.0,
-    "dom": 1.122
+    "lun": 1.019,
+    "mar": 0.985,
+    "mer": 0.94,
+    "gio": 0.958,
+    "ven": 0.972,
+    "sab": 1.003,
+    "dom": 1.124
    },
-   "trend_grezzo": 0.81,
-   "fattore_trend": 0.905,
+   "trend_grezzo": 0.816,
+   "fattore_trend": 0.908,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Trastevere",
-     "totale_periodo": 34027,
+     "totale_periodo": 33925,
      "url": "https://it.wikipedia.org/wiki/Trastevere"
     },
     "en.wikipedia": {
      "titolo": "Trastevere",
-     "totale_periodo": 44329,
+     "totale_periodo": 44269,
      "url": "https://en.wikipedia.org/wiki/Trastevere"
     }
    }
   },
   "campo_de_fiori": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
    "media_giornaliera_anno": 161.8,
-   "media_ultimi_7": 131.7,
-   "media_ultimi_30": 141.2,
-   "indice_7_giorni": 0.814,
-   "indice_30_giorni": 0.872,
+   "media_ultimi_7": 136.3,
+   "media_ultimi_30": 141.5,
+   "indice_7_giorni": 0.843,
+   "indice_30_giorni": 0.875,
    "profilo_giorno_settimana": {
     "lun": 1.003,
     "mar": 1.005,
     "mer": 0.995,
-    "gio": 0.967,
-    "ven": 0.957,
+    "gio": 0.965,
+    "ven": 0.958,
     "sab": 0.991,
-    "dom": 1.081
+    "dom": 1.082
    },
-   "trend_grezzo": 0.855,
-   "fattore_trend": 0.927,
+   "trend_grezzo": 0.865,
+   "fattore_trend": 0.932,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Campo_de'_Fiori",
-     "totale_periodo": 24193,
+     "totale_periodo": 24173,
      "url": "https://it.wikipedia.org/wiki/Campo_de%27_Fiori"
     },
     "en.wikipedia": {
      "titolo": "Campo_de'_Fiori",
-     "totale_periodo": 34870,
+     "totale_periodo": 34866,
      "url": "https://en.wikipedia.org/wiki/Campo_de%27_Fiori"
     }
    }
   },
   "bocca_della_verita": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 306.8,
-   "media_ultimi_7": 236.7,
-   "media_ultimi_30": 277.8,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 306.7,
+   "media_ultimi_7": 236.9,
+   "media_ultimi_30": 275.5,
    "indice_7_giorni": 0.772,
-   "indice_30_giorni": 0.906,
+   "indice_30_giorni": 0.898,
    "profilo_giorno_settimana": {
     "lun": 0.992,
     "mar": 0.96,
-    "mer": 0.947,
-    "gio": 0.924,
+    "mer": 0.951,
+    "gio": 0.92,
     "ven": 0.958,
     "sab": 1.057,
     "dom": 1.163
    },
-   "trend_grezzo": 0.865,
-   "fattore_trend": 0.933,
+   "trend_grezzo": 0.86,
+   "fattore_trend": 0.93,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Bocca_della_Verità",
-     "totale_periodo": 34115,
+     "totale_periodo": 34119,
      "url": "https://it.wikipedia.org/wiki/Bocca_della_Verit%C3%A0"
     },
     "en.wikipedia": {
      "titolo": "Bocca_della_Verità",
-     "totale_periodo": 77862,
+     "totale_periodo": 77840,
      "url": "https://en.wikipedia.org/wiki/Bocca_della_Verit%C3%A0"
     }
    }
   },
   "terme_di_caracalla": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 374.6,
-   "media_ultimi_7": 306.3,
-   "media_ultimi_30": 341.7,
-   "indice_7_giorni": 0.818,
-   "indice_30_giorni": 0.912,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 374.3,
+   "media_ultimi_7": 294.7,
+   "media_ultimi_30": 338.7,
+   "indice_7_giorni": 0.787,
+   "indice_30_giorni": 0.905,
    "profilo_giorno_settimana": {
-    "lun": 0.976,
-    "mar": 0.976,
-    "mer": 0.967,
-    "gio": 0.982,
-    "ven": 1.018,
+    "lun": 0.977,
+    "mar": 0.977,
+    "mer": 0.968,
+    "gio": 0.977,
+    "ven": 1.019,
     "sab": 0.98,
-    "dom": 1.102
+    "dom": 1.103
    },
-   "trend_grezzo": 0.884,
-   "fattore_trend": 0.942,
+   "trend_grezzo": 0.87,
+   "fattore_trend": 0.935,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Terme_di_Caracalla",
-     "totale_periodo": 33060,
+     "totale_periodo": 32979,
      "url": "https://it.wikipedia.org/wiki/Terme_di_Caracalla"
     },
     "en.wikipedia": {
      "titolo": "Baths_of_Caracalla",
-     "totale_periodo": 103656,
+     "totale_periodo": 103642,
      "url": "https://en.wikipedia.org/wiki/Baths_of_Caracalla"
     }
    }
   },
   "musei_capitolini": {
    "giorni": 365,
-   "dal": "2025-11-05",
-   "al": "2026-11-04",
-   "media_giornaliera_anno": 260.5,
-   "media_ultimi_7": 218.4,
-   "media_ultimi_30": 237.5,
-   "indice_7_giorni": 0.839,
-   "indice_30_giorni": 0.912,
+   "dal": "2025-11-06",
+   "al": "2026-11-05",
+   "media_giornaliera_anno": 260.3,
+   "media_ultimi_7": 217.7,
+   "media_ultimi_30": 234.8,
+   "indice_7_giorni": 0.836,
+   "indice_30_giorni": 0.902,
    "profilo_giorno_settimana": {
-    "lun": 1.063,
+    "lun": 1.064,
     "mar": 0.993,
     "mer": 0.981,
-    "gio": 0.961,
+    "gio": 0.959,
     "ven": 0.944,
-    "sab": 0.955,
-    "dom": 1.103
+    "sab": 0.956,
+    "dom": 1.104
    },
-   "trend_grezzo": 0.89,
-   "fattore_trend": 0.945,
+   "trend_grezzo": 0.882,
+   "fattore_trend": 0.941,
    "articoli": {
     "it.wikipedia": {
      "titolo": "Musei_Capitolini",
-     "totale_periodo": 28243,
+     "totale_periodo": 28225,
      "url": "https://it.wikipedia.org/wiki/Musei_Capitolini"
     },
     "en.wikipedia": {
      "titolo": "Capitoline_Museums",
-     "totale_periodo": 66830,
+     "totale_periodo": 66781,
      "url": "https://en.wikipedia.org/wiki/Capitoline_Museums"
     }
    }
